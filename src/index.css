@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   DESIGN TOKENS — Modern Dark Cinema (Kaldilabs Design System)
+   Style: Glassmorphism + Deep Black + Blue-Indigo Accent
+   Font:  Plus Jakarta Sans
+   ============================================================ */
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* Surface elevation scale */
+    --surface-base:    #050506;
+    --surface-raised:  #0a0a0d;
+    --surface-overlay: #0f0f14;
+    --surface-high:    #141419;
+
+    /* Foreground */
+    --fg:        #EDEDEF;
+    --fg-muted:  #8A8F98;
+    --fg-faint:  #4D5260;
+
+    /* Accent */
+    --accent-blue:   #3B82F6;
+    --accent-indigo: #5E6AD2;
+    --accent-violet: #7C3AED;
+
+    /* Borders */
+    --border:        rgba(255,255,255,0.08);
+    --border-subtle: rgba(255,255,255,0.05);
+    --border-accent: rgba(59,130,246,0.2);
+
+    /* Motion */
+    --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out:    cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--surface-base);
+    color: var(--fg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100dvh;
+    line-height: 1.6;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(59,130,246,0.45); }
+
+  ::selection { background: rgba(59,130,246,0.28); color: #fff; }
+
+  a { text-decoration: none; color: inherit; }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+}
+
+@layer components {
+
+  /* ── Buttons ─────────────────────────────────────────────── */
+
+  .btn-primary {
+    position: relative; overflow: hidden;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 28px; border-radius: 12px;
+    background: linear-gradient(135deg, #2563eb 0%, #5E6AD2 55%, #7C3AED 100%);
+    background-size: 200% 200%;
+    color: #fff; font-weight: 700; font-size: 14px; letter-spacing: -0.15px;
+    border: 1px solid rgba(255,255,255,0.12);
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(37,99,235,0.35), 0 1px 0 rgba(255,255,255,0.12) inset;
+    transition: transform 0.18s var(--ease-spring), box-shadow 0.22s var(--ease-smooth), background-position 0.4s var(--ease-smooth);
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.09) 50%, transparent 65%);
+    background-size: 200% 100%;
+    background-position: 200% 0;
+    transition: background-position 0.5s var(--ease-smooth);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 8px 28px rgba(37,99,235,0.45), 0 0 40px rgba(94,106,210,0.2), 0 1px 0 rgba(255,255,255,0.15) inset;
+    background-position: 100% 100%;
+  }
+  .btn-primary:hover::before { background-position: -200% 0; }
+  .btn-primary:active { transform: scale(0.97); box-shadow: 0 2px 8px rgba(37,99,235,0.3); }
+  .btn-primary:focus-visible { outline: 2px solid rgba(59,130,246,0.7); outline-offset: 3px; }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 28px; border-radius: 12px;
+    background: rgba(255,255,255,0.05);
+    color: var(--fg); font-weight: 600; font-size: 14px; letter-spacing: -0.15px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset;
+    transition: all 0.2s var(--ease-spring);
+  }
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(255,255,255,0.16);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35), 0 1px 0 rgba(255,255,255,0.06) inset;
+  }
+  .btn-secondary:active { transform: scale(0.97); }
+  .btn-secondary:focus-visible { outline: 2px solid rgba(255,255,255,0.3); outline-offset: 3px; }
+
+  /* ── Cards ───────────────────────────────────────────────── */
+
+  .card-dark {
+    background: rgba(255,255,255,0.032);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 2px 8px rgba(0,0,0,0.3);
+    transition: background 0.25s var(--ease-smooth), border-color 0.25s var(--ease-smooth),
+                transform 0.3s var(--ease-spring), box-shadow 0.3s var(--ease-smooth);
+  }
+  .card-dark:hover {
+    background: rgba(255,255,255,0.055);
+    border-color: rgba(59,130,246,0.22);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(59,130,246,0.1),
+                0 1px 0 rgba(255,255,255,0.06) inset;
+  }
+
+  /* Glass card variant */
+  .card-glass {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.08) inset;
+  }
+
+  /* ── Section tag / pill badge ────────────────────────────── */
+
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 12px; border-radius: 99px;
+    font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    background: rgba(59,130,246,0.1);
+    border: 1px solid rgba(59,130,246,0.22);
+    color: #60a5fa;
+  }
+
+  /* ── Gradient text ───────────────────────────────────────── */
+
+  .gradient-text {
+    background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.65) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  .gradient-text-blue {
+    background: linear-gradient(135deg, #60a5fa 0%, #818cf8 45%, #a78bfa 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  .gradient-text-vivid {
+    background: linear-gradient(135deg, #3B82F6 0%, #5E6AD2 40%, #7C3AED 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    animation: gradient-x 6s ease infinite;
+  }
+
+  /* ── Ambient glow blobs (used in Hero) ───────────────────── */
+
+  .blob {
+    position: absolute; border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none; will-change: transform;
+  }
+  .blob-blue {
+    background: radial-gradient(circle, rgba(59,130,246,0.22) 0%, transparent 70%);
+    animation: blob 20s ease-in-out infinite;
+  }
+  .blob-violet {
+    background: radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 70%);
+    animation: blob 26s ease-in-out infinite reverse;
+  }
+  .blob-indigo {
+    background: radial-gradient(circle, rgba(94,106,210,0.15) 0%, transparent 70%);
+    animation: blob 16s ease-in-out infinite 5s;
+  }
+
+  /* ── Grid overlay ────────────────────────────────────────── */
+
+  .grid-overlay {
+    background-image: var(--tw-gradient-stops, none),
+      linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
+    background-size: 100%, 44px 44px, 44px 44px;
+  }
+
+  /* ── Stat / metric callout ───────────────────────────────── */
+
+  .stat-card {
+    display: flex; flex-direction: column; gap: 2px;
+    padding: 20px 24px; border-radius: 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset;
+  }
+
+  /* ── Divider ─────────────────────────────────────────────── */
+
+  .divider {
+    height: 1px; width: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08) 50%, transparent);
+  }
+
+  /* ── Focus ring utility ──────────────────────────────────── */
+
+  .focus-ring:focus-visible {
+    outline: 2px solid rgba(59,130,246,0.6);
+    outline-offset: 3px;
+  }
+}
