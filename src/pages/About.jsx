@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, Check } from 'lucide-react'
-import { FadeUp, SlideLeft, SlideRight, StaggerContainer, StaggerItem } from '../components/Animate'
+import { FadeUp, StaggerContainer, StaggerItem } from '../components/Animate'
 
 const technologies = [
   'React', 'Next.js', 'Node.js', 'Python', 'PostgreSQL', 'MongoDB',
@@ -165,8 +165,8 @@ export default function About() {
             <div className="relative rounded-3xl p-12 bg-gradient-to-br from-[#0f172a] to-[#1e1b4b] border border-white/10 overflow-hidden">
               <div className="absolute inset-0 bg-hero-glow opacity-80" />
               <div className="relative">
-                <h2 className="text-3xl font-black text-white tracking-tight mb-3">Let's Work Together</h2>
-                <p className="text-white/50 mb-8">Reach out and let's discuss how Kaldilabs can help your business grow.</p>
+                <h2 className="text-3xl font-black text-white tracking-tight mb-3">Let&apos;s Work Together</h2>
+                <p className="text-white/50 mb-8">Reach out and let&apos;s discuss how Kaldilabs can help your business grow.</p>
                 <Link to="/contact" className="btn-primary">Get in Touch <ArrowRight size={15} /></Link>
               </div>
             </div>

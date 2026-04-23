@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowRight, Check, ChevronRight, Zap, Shield, Clock, Star, Sparkles } from 'lucide-react'
-import { FadeUp, FadeIn, StaggerContainer, StaggerItem, SlideLeft, SlideRight, ScaleIn } from '../components/Animate'
+import { FadeUp, StaggerContainer, StaggerItem, SlideLeft, SlideRight, ScaleIn } from '../components/Animate'
+import NewsletterSignup from '../components/NewsletterSignup'
 import { solutions } from '../data/solutions'
 import { services } from '../data/services'
 
@@ -203,7 +204,7 @@ export default function Home() {
               <div className="section-tag mb-5">Why Kaldilabs</div>
               <h2 className="text-4xl font-extrabold tracking-tight mb-5">The Kaldilabs Difference</h2>
               <p className="text-white/50 leading-relaxed mb-10">
-                We don't just write code — we build solutions that make measurable impact. Honest timelines, clear communication, and software that actually works.
+                We don&apos;t just write code &mdash; we build solutions that make measurable impact. Honest timelines, clear communication, and software that actually works.
               </p>
               <div className="grid sm:grid-cols-2 gap-3">
                 {whyUs.map(({ icon: Icon, title, desc, color }) => (
@@ -249,7 +250,7 @@ export default function Home() {
           <FadeUp className="text-center max-w-xl mx-auto mb-16">
             <div className="section-tag mb-4">Testimonials</div>
             <h2 className="text-4xl font-extrabold tracking-tight mb-4">What Clients Say</h2>
-            <p className="text-white/50">Hear directly from the businesses we've helped transform.</p>
+            <p className="text-white/50">Hear directly from the businesses we&apos;ve helped transform.</p>
           </FadeUp>
           <StaggerContainer className="grid md:grid-cols-3 gap-5">
             {testimonials.map((t, i) => (
@@ -258,7 +259,7 @@ export default function Home() {
                   <div className="flex gap-1 mb-5">
                     {[...Array(5)].map((_, j) => <Star key={j} size={13} className="fill-amber-400 text-amber-400" />)}
                   </div>
-                  <p className="text-sm text-white/58 leading-relaxed flex-1 mb-6">"{t.text}"</p>
+                  <p className="text-sm text-white/58 leading-relaxed flex-1 mb-6">&ldquo;{t.text}&rdquo;</p>
                   <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06]">
                     <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-sm font-bold text-white shrink-0`}>
                       {t.avatar}
@@ -295,7 +296,7 @@ export default function Home() {
                   Have a project in mind?
                 </h2>
                 <p className="text-white/50 mb-10 leading-relaxed max-w-md mx-auto">
-                  Let's build it together. Turn your vision into reliable, scalable software.
+                  Let&apos;s build it together. Turn your vision into reliable, scalable software.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <Link to="/contact" className="btn-primary">Contact Us <ArrowRight size={15} /></Link>
@@ -304,6 +305,18 @@ export default function Home() {
               </div>
             </div>
           </ScaleIn>
+        </div>
+      </section>
+
+      {/* ── NEWSLETTER ─────────────────────────────────────────────────── */}
+      <section
+        className="py-20 px-5"
+        aria-label="Newsletter"
+      >
+        <div className="max-w-2xl mx-auto">
+          <FadeUp>
+            <NewsletterSignup />
+          </FadeUp>
         </div>
       </section>
 
