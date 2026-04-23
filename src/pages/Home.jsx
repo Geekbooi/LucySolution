@@ -1,6 +1,7 @@
+import { lazy, Suspense } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import HeroVisual from '../components/HeroVisual'
+const HeroScene = lazy(() => import('../components/HeroScene'))
 import {
   ArrowRight, Check, ChevronRight, Zap, Shield, Clock, Star, Sparkles,
   Search, Pen, Rocket, GraduationCap, Headphones,
@@ -202,14 +203,18 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* ── Hero visual — floating dashboard cards ──────────── */}
+          {/* ── 3D orb scene ────────────────────────────────────── */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.0, ease: EASE, delay: 0.35 }}
-            className="hidden lg:block relative h-[560px]"
+            initial={{ opacity: 0, scale: 0.88 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, ease: EASE, delay: 0.3 }}
+            className="hidden lg:block relative h-[580px]"
           >
-            <HeroVisual />
+            {/* Glow halo behind the orb */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_65%_55%_at_50%_50%,rgba(59,130,246,0.18),rgba(124,58,237,0.1)_55%,transparent_80%)] pointer-events-none" />
+            <Suspense fallback={null}>
+              <HeroScene />
+            </Suspense>
           </motion.div>
         </div>
 
