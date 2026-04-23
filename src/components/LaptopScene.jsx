@@ -115,11 +115,11 @@ function Laptop({ mouse }) {
     const lerpFactor = 0.05
 
     if (groupRef.current) {
-      // Damped mouse rotation
+      // Damped mouse rotation — offset Y by 0.22 rad for default 3/4 view
       groupRef.current.rotation.y +=
-        (mouse.x * 0.35 - groupRef.current.rotation.y) * lerpFactor
+        (mouse.x * 0.35 + 0.22 - groupRef.current.rotation.y) * lerpFactor
       groupRef.current.rotation.x +=
-        (mouse.y * -0.12 - groupRef.current.rotation.x) * lerpFactor
+        (mouse.y * -0.12 - 0.05 - groupRef.current.rotation.x) * lerpFactor
     }
 
     // Pulse screen light intensity
@@ -337,7 +337,7 @@ export default function LaptopScene() {
       <Canvas
         shadows
         dpr={[1, 1.5]}
-        camera={{ position: [0, 0.8, 5.5], fov: 38 }}
+        camera={{ position: [0, 0.9, 5.0], fov: 40 }}
         gl={{
           antialias: true,
           alpha: true,
