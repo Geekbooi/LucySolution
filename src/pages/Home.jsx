@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowRight, Check, ChevronRight, Zap, Shield, Clock, Star, Sparkles } from 'lucide-react'
@@ -5,6 +6,9 @@ import { FadeUp, StaggerContainer, StaggerItem, SlideLeft, SlideRight, ScaleIn }
 import NewsletterSignup from '../components/NewsletterSignup'
 import { solutions } from '../data/solutions'
 import { services } from '../data/services'
+
+// Lazy-load the heavy Three.js canvas so it never blocks first paint
+const LaptopScene = lazy(() => import('../components/LaptopScene'))
 
 const EASE = [0.16, 1, 0.3, 1]
 
@@ -33,12 +37,12 @@ export default function Home() {
     <div>
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+      <section className="relative min-h-screen flex items-center overflow-hidden pt-16">
 
         {/* Ambient glow blobs */}
-        <div className="blob blob-blue w-[700px] h-[700px] top-[-180px] left-[-140px] opacity-70" />
+        <div className="blob blob-blue   w-[700px] h-[700px] top-[-180px] left-[-140px]  opacity-70" />
         <div className="blob blob-violet w-[600px] h-[600px] bottom-[-120px] right-[-100px] opacity-60" />
-        <div className="blob blob-indigo w-[400px] h-[400px] top-[35%] left-[55%] opacity-50" />
+        <div className="blob blob-indigo w-[400px] h-[400px] top-[35%] left-[55%]         opacity-50" />
 
         {/* Grid overlay */}
         <div
@@ -49,83 +53,104 @@ export default function Home() {
           }}
         />
 
-        {/* Radial vignette */}
+        {/* Radial vignettes */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(59,130,246,0.16),rgba(94,106,210,0.08)_45%,transparent_75%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_110%,rgba(5,5,6,0.9),transparent)]" />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-5 text-center">
+        {/* ── Split layout: text left | 3D right ───────────────── */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-5 grid lg:grid-cols-2 gap-8 items-center">
 
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 16, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.5, ease: EASE }}
-            className="inline-flex items-center gap-2 mb-8"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest
-                            bg-white/[0.06] border border-white/10 text-blue-300 backdrop-blur-sm">
-              <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse" />
-              Trusted Software Partner
-            </div>
-          </motion.div>
+          {/* ── TEXT COLUMN ────────────────────────────────────── */}
+          <div className="text-center lg:text-left py-20 lg:py-0">
 
-          {/* Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: EASE, delay: 0.08 }}
-            className="text-5xl sm:text-6xl lg:text-[76px] font-extrabold tracking-[-2px] leading-[1.04] mb-7"
-          >
-            <span className="gradient-text">Building Smart</span>
-            <br />
-            <span className="gradient-text-vivid">Software Solutions</span>
-            <br />
-            <span className="gradient-text">for Modern Business</span>
-          </motion.h1>
-
-          {/* Sub-headline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: EASE, delay: 0.18 }}
-            className="text-lg text-white/50 max-w-[540px] mx-auto leading-relaxed mb-10"
-          >
-            High-quality, scalable systems tailored to your needs — from concept through deployment and beyond.
-          </motion.p>
-
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: EASE, delay: 0.28 }}
-            className="flex flex-col sm:flex-row gap-3 justify-center"
-          >
-            <Link to="/contact" className="btn-primary">
-              Start a Project <ArrowRight size={16} />
-            </Link>
-            <Link to="/solutions" className="btn-secondary">
-              Explore Solutions
-            </Link>
-          </motion.div>
-
-          {/* Stats bar */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: EASE, delay: 0.42 }}
-            className="mt-18 pt-10 border-t border-white/[0.07] grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-xl mx-auto"
-          >
-            {stats.map((s) => (
-              <div key={s.label} className="text-center">
-                <div className="text-3xl font-black gradient-text-blue tracking-tight">{s.num}</div>
-                <div className="text-[11px] text-white/38 mt-1 uppercase tracking-wider">{s.label}</div>
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 16, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="inline-flex items-center gap-2 mb-8"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest
+                              bg-white/[0.06] border border-white/10 text-blue-300 backdrop-blur-sm">
+                <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse" />
+                Trusted Software Partner
               </div>
-            ))}
+            </motion.div>
+
+            {/* Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: EASE, delay: 0.08 }}
+              className="text-5xl sm:text-6xl lg:text-[68px] font-extrabold tracking-[-2px] leading-[1.04] mb-7"
+            >
+              <span className="gradient-text">Building Smart</span>
+              <br />
+              <span className="gradient-text-vivid">Software Solutions</span>
+              <br />
+              <span className="gradient-text">for Modern Business</span>
+            </motion.h1>
+
+            {/* Sub-headline */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: EASE, delay: 0.18 }}
+              className="text-lg text-white/50 max-w-[500px] lg:mx-0 mx-auto leading-relaxed mb-10"
+            >
+              High-quality, scalable systems tailored to your needs — from concept through deployment and beyond.
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, ease: EASE, delay: 0.28 }}
+              className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
+            >
+              <Link to="/contact" className="btn-primary">
+                Start a Project <ArrowRight size={16} />
+              </Link>
+              <Link to="/solutions" className="btn-secondary">
+                Explore Solutions
+              </Link>
+            </motion.div>
+
+            {/* Stats bar */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, ease: EASE, delay: 0.42 }}
+              className="mt-14 pt-8 border-t border-white/[0.07] grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-xl lg:mx-0 mx-auto"
+            >
+              {stats.map((s) => (
+                <div key={s.label} className="text-center lg:text-left">
+                  <div className="text-3xl font-black gradient-text-blue tracking-tight">{s.num}</div>
+                  <div className="text-[11px] text-white/38 mt-1 uppercase tracking-wider">{s.label}</div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* ── 3D LAPTOP COLUMN ───────────────────────────────── */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.1, ease: EASE, delay: 0.3 }}
+            className="hidden lg:block relative h-[540px]"
+            aria-hidden="true"
+          >
+            {/* Subtle glow behind the canvas */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_55%,rgba(59,130,246,0.12),rgba(124,58,237,0.06)_55%,transparent_80%)] pointer-events-none" />
+            <Suspense fallback={null}>
+              <LaptopScene />
+            </Suspense>
           </motion.div>
+
         </div>
 
         {/* Bottom fade */}
-        <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-[#050506] to-transparent" />
+        <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-[#050506] to-transparent pointer-events-none" />
       </section>
 
       {/* ── SERVICES ──────────────────────────────────────────────── */}
