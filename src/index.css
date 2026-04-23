@@ -12,11 +12,11 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    /* Surface elevation scale */
-    --surface-base:    #050506;
-    --surface-raised:  #0a0a0d;
-    --surface-overlay: #0f0f14;
-    --surface-high:    #141419;
+    /* Surface elevation scale — dark navy blue (not pure black) */
+    --surface-base:    #06060f;
+    --surface-raised:  #0a0a16;
+    --surface-overlay: #0f0f1e;
+    --surface-high:    #151525;
 
     /* Foreground */
     --fg:        #EDEDEF;
@@ -44,6 +44,11 @@
   body {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: var(--surface-base);
+    /* Subtle blue-violet depth gradient instead of flat black */
+    background-image:
+      radial-gradient(ellipse 130% 55% at 12% -8%,  rgba(22, 44, 115, 0.32) 0%, transparent 58%),
+      radial-gradient(ellipse 90%  55% at 88% 110%, rgba(70, 20, 130, 0.22)  0%, transparent 58%),
+      radial-gradient(ellipse 60%  40% at 50% 50%,  rgba(10, 10, 30,  0.4)   0%, transparent 80%);
     color: var(--fg);
     font-size: 15px;
     line-height: 1.6;
@@ -52,6 +57,18 @@
     -moz-osx-font-smoothing: grayscale;
     min-height: 100dvh;
   }
+
+  /* Subtle dot noise grain — adds texture depth */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 3px 3px;
+    opacity: 0.018;
+  }
+
+  /* All page content sits above the grain */
+  #root { position: relative; z-index: 1; }
 
   /* Scrollbar */
   ::-webkit-scrollbar { width: 4px; }

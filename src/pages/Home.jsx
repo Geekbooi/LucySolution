@@ -1,6 +1,6 @@
-import { lazy, Suspense } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import HeroVisual from '../components/HeroVisual'
 import {
   ArrowRight, Check, ChevronRight, Zap, Shield, Clock, Star, Sparkles,
   Search, Pen, Rocket, GraduationCap, Headphones,
@@ -14,8 +14,6 @@ import {
 import NewsletterSignup from '../components/NewsletterSignup'
 import { solutions } from '../data/solutions'
 import { services } from '../data/services'
-
-const LaptopScene = lazy(() => import('../components/LaptopScene'))
 
 const EASE = [0.16, 1, 0.3, 1]
 
@@ -116,18 +114,19 @@ export default function Home() {
           ════════════════════════════════════════════════════════ */}
       <section className="relative min-h-screen flex items-center overflow-hidden pt-16">
 
-        {/* Animated blob aurora */}
-        <div className="blob blob-blue   w-[720px] h-[720px] -top-44 -left-36   opacity-70" />
-        <div className="blob blob-violet w-[620px] h-[620px] -bottom-28 -right-28 opacity-60" style={{ animationDelay: '4s' }} />
-        <div className="blob blob-indigo w-[420px] h-[420px] top-[38%] left-[52%] opacity-45" style={{ animationDelay: '8s' }} />
+        {/* Aurora blobs — more vibrant now that bg isn't pure black */}
+        <div className="blob blob-blue   w-[800px] h-[800px] -top-56 -left-48   opacity-80" />
+        <div className="blob blob-violet w-[680px] h-[680px] -bottom-36 -right-36 opacity-70" style={{ animationDelay: '5s' }} />
+        <div className="blob blob-indigo w-[480px] h-[480px] top-[35%] left-[50%] opacity-55" style={{ animationDelay: '9s' }} />
 
-        {/* Grid */}
+        {/* Dot grid — more modern than line grid */}
         <div
-          className="absolute inset-0 opacity-[0.032]"
-          style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,1) 1px,transparent 1px)', backgroundSize: '48px 48px' }}
+          className="absolute inset-0 opacity-[0.055]"
+          style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.55) 1px, transparent 1px)', backgroundSize: '36px 36px' }}
         />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(59,130,246,0.18),rgba(94,106,210,0.08)_45%,transparent_75%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_110%,rgba(5,5,6,0.95),transparent)]" />
+        {/* Top radial glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_65%_at_50%_-15%,rgba(59,130,246,0.22),rgba(94,106,210,0.1)_40%,transparent_72%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_50%_115%,rgba(6,6,15,0.96),transparent)]" />
 
         {/* Split layout */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-5 grid lg:grid-cols-2 gap-8 items-center">
@@ -203,18 +202,14 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* ── 3D laptop column ────────────────────────────────── */}
+          {/* ── Hero visual — floating dashboard cards ──────────── */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, ease: EASE, delay: 0.3 }}
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.0, ease: EASE, delay: 0.35 }}
             className="hidden lg:block relative h-[560px]"
-            aria-hidden="true"
           >
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_55%,rgba(59,130,246,0.13),rgba(124,58,237,0.07)_55%,transparent_80%)] pointer-events-none" />
-            <Suspense fallback={null}>
-              <LaptopScene />
-            </Suspense>
+            <HeroVisual />
           </motion.div>
         </div>
 
