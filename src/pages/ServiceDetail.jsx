@@ -1,7 +1,7 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { ArrowRight, Check, ChevronRight } from 'lucide-react'
 import { FadeUp, SlideLeft, SlideRight, StaggerContainer, StaggerItem } from '../components/Animate'
-import { getService, services } from '../data/services'
+import { getService } from '../data/services'
 
 export default function ServiceDetail() {
   const { slug } = useParams()
@@ -48,7 +48,7 @@ export default function ServiceDetail() {
             <p className="text-white/50">A clear, transparent process so you always know what to expect.</p>
           </FadeUp>
           <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {srv.process.map((step, i) => (
+            {srv.process.map((step) => (
               <StaggerItem key={step.step}>
                 <div className="card-dark p-6 h-full">
                   <div className="text-4xl font-black text-white/6 mb-3 leading-none">{step.step}</div>
@@ -67,7 +67,7 @@ export default function ServiceDetail() {
           <SlideLeft>
             <div className="card-dark p-8 h-full">
               <div className="section-tag mb-5">Deliverables</div>
-              <h3 className="text-2xl font-bold text-white mb-6">What You'll Receive</h3>
+              <h3 className="text-2xl font-bold text-white mb-6">What You&apos;ll Receive</h3>
               <div className="space-y-3">
                 {srv.deliverables.map((d) => (
                   <div key={d} className="flex items-center gap-3 p-3.5 rounded-xl bg-white/[0.025] border border-white/6">
@@ -108,7 +108,7 @@ export default function ServiceDetail() {
               <div className="absolute inset-0 bg-hero-glow opacity-80" />
               <div className="relative">
                 <h2 className="text-3xl font-black text-white tracking-tight mb-3">Ready to get started?</h2>
-                <p className="text-white/50 mb-8">Let's talk about how our {srv.title} service can help your business.</p>
+                <p className="text-white/50 mb-8">Let&apos;s talk about how our {srv.title} service can help your business.</p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <Link to="/contact" className="btn-primary">Contact Us <ArrowRight size={15} /></Link>
                   <Link to="/pricing" className="btn-secondary">View Pricing</Link>

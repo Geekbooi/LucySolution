@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
@@ -18,6 +19,7 @@ function ScrollReset() {
   return null
 }
 
+Layout.propTypes = { children: PropTypes.node }
 function Layout({ children }) {
   return (
     <div className="min-h-screen flex flex-col">

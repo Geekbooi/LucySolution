@@ -1,4 +1,5 @@
 // @ts-check
+/* eslint-env node */
 import { chromium } from '@playwright/test'
 import { existsSync, mkdirSync } from 'fs'
 import { resolve, join, dirname } from 'path'

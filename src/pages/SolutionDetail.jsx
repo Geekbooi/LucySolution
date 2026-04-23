@@ -176,7 +176,7 @@ export default function SolutionDetail() {
               <div className="absolute inset-0 bg-hero-glow opacity-80" />
               <div className="relative">
                 <h2 className="text-3xl font-black tracking-tight text-white mb-3">Ready to get started?</h2>
-                <p className="text-white/50 mb-8">Let's discuss how {sol.title} can transform your operations.</p>
+                <p className="text-white/50 mb-8">Let&apos;s discuss how {sol.title} can transform your operations.</p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <Link to="/contact" className="btn-primary">Request Demo <ArrowRight size={15} /></Link>
                   <Link to="/pricing" className="btn-secondary">View Pricing</Link>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Mail, Phone, MapPin, ArrowRight, CheckCircle, Clock, MessageSquare } from 'lucide-react'
-import { FadeUp, SlideLeft, SlideRight, StaggerContainer, StaggerItem } from '../components/Animate'
+import { FadeUp, SlideLeft, SlideRight } from '../components/Animate'
 
 const services = [
   'Software Development',
@@ -50,10 +50,10 @@ export default function Contact() {
           <FadeUp className="max-w-2xl">
             <div className="section-tag mb-5">Contact Us</div>
             <h1 className="text-5xl md:text-6xl font-black tracking-tight gradient-text mb-5">
-              Let's Build Something Great
+              Let&apos;s Build Something Great
             </h1>
             <p className="text-xl text-white/55 leading-relaxed">
-              Tell us about your project and we'll get back to you within 24 hours. No commitment required.
+              Tell us about your project and we&apos;ll get back to you within 24 hours. No commitment required.
             </p>
           </FadeUp>
         </div>
@@ -73,7 +73,7 @@ export default function Contact() {
                   </div>
                   <h2 className="text-2xl font-black text-white mb-3">Message Sent!</h2>
                   <p className="text-white/50 max-w-sm leading-relaxed mb-8">
-                    Thanks for reaching out. We'll review your request and get back to you within 24 hours.
+                    Thanks for reaching out. We&apos;ll review your request and get back to you within 24 hours.
                   </p>
                   <button
                     onClick={() => { setStatus('idle'); setForm({ name: '', email: '', company: '', service: '', message: '' }) }}
@@ -86,7 +86,7 @@ export default function Contact() {
                 <>
                   <div className="mb-8">
                     <h2 className="text-2xl font-black text-white mb-2">Send Us a Message</h2>
-                    <p className="text-white/45 text-sm">Fill in the details below and we'll be in touch.</p>
+                    <p className="text-white/45 text-sm">Fill in the details below and we&apos;ll be in touch.</p>
                   </div>
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="grid sm:grid-cols-2 gap-5">

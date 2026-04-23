@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { motion } from 'framer-motion'
 
 const EASE_OUT = [0.16, 1, 0.3, 1]
@@ -57,6 +58,11 @@ const staggerItemVariants = {
 
 const VIEWPORT = { once: true, margin: '-55px' }
 
+const childProps = {
+  children:  PropTypes.node,
+  className: PropTypes.string,
+}
+
 export function FadeUp({ children, className, delay = 0, ...props }) {
   return (
     <motion.div
@@ -72,6 +78,7 @@ export function FadeUp({ children, className, delay = 0, ...props }) {
     </motion.div>
   )
 }
+FadeUp.propTypes = { ...childProps, delay: PropTypes.number }
 
 export function FadeIn({ children, className, delay = 0, ...props }) {
   return (
@@ -88,6 +95,7 @@ export function FadeIn({ children, className, delay = 0, ...props }) {
     </motion.div>
   )
 }
+FadeIn.propTypes = { ...childProps, delay: PropTypes.number }
 
 export function SlideLeft({ children, className, ...props }) {
   return (
@@ -103,6 +111,7 @@ export function SlideLeft({ children, className, ...props }) {
     </motion.div>
   )
 }
+SlideLeft.propTypes = childProps
 
 export function SlideRight({ children, className, ...props }) {
   return (
@@ -118,6 +127,7 @@ export function SlideRight({ children, className, ...props }) {
     </motion.div>
   )
 }
+SlideRight.propTypes = childProps
 
 export function ScaleIn({ children, className, ...props }) {
   return (
@@ -133,6 +143,7 @@ export function ScaleIn({ children, className, ...props }) {
     </motion.div>
   )
 }
+ScaleIn.propTypes = childProps
 
 export function StaggerContainer({ children, className, ...props }) {
   return (
@@ -148,6 +159,7 @@ export function StaggerContainer({ children, className, ...props }) {
     </motion.div>
   )
 }
+StaggerContainer.propTypes = childProps
 
 export function StaggerItem({ children, className, ...props }) {
   return (
@@ -160,6 +172,7 @@ export function StaggerItem({ children, className, ...props }) {
     </motion.div>
   )
 }
+StaggerItem.propTypes = childProps
 
 export function PressScale({ children, className, scale = 0.97, ...props }) {
   return (
@@ -174,3 +187,4 @@ export function PressScale({ children, className, scale = 0.97, ...props }) {
     </motion.div>
   )
 }
+PressScale.propTypes = { ...childProps, scale: PropTypes.number }

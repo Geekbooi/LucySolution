@@ -201,7 +201,7 @@ export default function Pricing() {
             <div className="absolute inset-0 bg-hero-glow opacity-80" />
             <div className="relative">
               <h2 className="text-3xl font-black text-white tracking-tight mb-3">Not sure which plan fits?</h2>
-              <p className="text-white/50 mb-8">Let's talk. We'll help you find the right solution for your budget and goals.</p>
+              <p className="text-white/50 mb-8">Let&apos;s talk. We&apos;ll help you find the right solution for your budget and goals.</p>
               <Link to="/contact" className="btn-primary">Talk to Us <ArrowRight size={15} /></Link>
             </div>
           </div>

@@ -16,7 +16,7 @@ export default function Services() {
         </FadeUp>
 
         <StaggerContainer className="grid md:grid-cols-1 gap-6">
-          {services.map((srv, i) => (
+          {services.map((srv) => (
             <StaggerItem key={srv.slug}>
               <div className="card-dark p-8 md:p-10">
                 <div className="grid md:grid-cols-2 gap-10 items-start">

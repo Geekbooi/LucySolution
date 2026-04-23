@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
+import PropTypes from 'prop-types'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react'
+import { Menu, X, ChevronDown, ArrowRight, Search } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const navItems = [
@@ -47,7 +48,7 @@ function DropdownMenu({ items, onClose }) {
       }}
     >
       <div className="p-2">
-        {items.map((item, i) => (
+        {items.map((item) => (
           <Link
             key={item.path}
             to={item.path}
@@ -73,15 +74,25 @@ function DropdownMenu({ items, onClose }) {
   )
 }
 
+DropdownMenu.propTypes = {
+  items:   PropTypes.arrayOf(PropTypes.shape({ path: PropTypes.string, label: PropTypes.string, desc: PropTypes.string })).isRequired,
+  onClose: PropTypes.func.isRequired,
+}
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
   const location = useLocation()
   const timeoutRef = useRef(null)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20)
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      setScrollProgress(docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0)
+    }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -99,9 +110,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'shadow-2xl shadow-black/50'
-          : ''
+        scrolled ? 'shadow-2xl shadow-black/50' : ''
       }`}
       style={scrolled ? {
         background: 'rgba(5,5,6,0.88)',
@@ -110,6 +119,13 @@ export default function Navbar() {
         borderBottom: '1px solid rgba(255,255,255,0.07)',
       } : {}}
     >
+      {/* Scroll progress bar */}
+      {scrolled && (
+        <div
+          className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-blue-500 via-indigo-500 to-transparent pointer-events-none"
+          style={{ width: `${scrollProgress}%`, transition: 'width 0.1s linear' }}
+        />
+      )}
       <nav className="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
 
         {/* Logo */}
@@ -178,6 +194,17 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-3">
+          {/* Command palette trigger */}
+          <button
+            className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm
+                       bg-white/[0.04] border border-white/8 text-white/40
+                       hover:text-white/65 hover:bg-white/[0.07] transition-all duration-200"
+            aria-label="Search"
+          >
+            <Search size={14} />
+            <span className="text-xs hidden lg:block">Search</span>
+            <kbd className="hidden lg:inline ml-1 px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/8 text-[10px] font-mono text-white/28">⌘K</kbd>
+          </button>
           <Link
             to="/contact"
             className="btn-primary py-2.5 px-5 text-[13.5px]"
