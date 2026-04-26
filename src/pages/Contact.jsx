@@ -1,6 +1,11 @@
 import { useState } from 'react'
-import { Mail, Phone, MapPin, ArrowRight, CheckCircle, Clock, MessageSquare } from 'lucide-react'
+import emailjs from '@emailjs/browser'
+import { Mail, MapPin, ArrowRight, CheckCircle, Clock, MessageSquare } from 'lucide-react'
 import { FadeUp, SlideLeft, SlideRight } from '../components/Animate'
+
+const EMAILJS_SERVICE  = 'service_0xgkkys'
+const EMAILJS_TEMPLATE = 'template_jx9w2tf'
+const EMAILJS_PUBLIC   = 'Zf9zR5kW7q8WlKnuE'
 
 const services = [
   'Software Development',
@@ -15,29 +20,44 @@ const services = [
 ]
 
 const contactInfo = [
-  { icon: Mail, label: 'Email', value: 'hello@kaldilabs.com', href: 'mailto:hello@kaldilabs.com' },
-  { icon: Phone, label: 'Phone', value: '+251 911 234 567', href: 'tel:+251911234567' },
-  { icon: MapPin, label: 'Location', value: 'Addis Ababa, Ethiopia', href: null },
+  { icon: Mail,    label: 'Email',    value: 'hello@lucysolution.com', href: 'mailto:hello@lucysolution.com' },
+  { icon: MapPin,  label: 'Location', value: 'Worldwide · Remote-First', href: null },
 ]
 
 const faqs = [
   { q: 'How quickly do you respond?', a: 'We reply to all inquiries within 24 hours on business days.' },
-  { q: 'Do you work with international clients?', a: 'Yes, we work with businesses across Africa and globally.' },
+  { q: 'Do you work with international clients?', a: 'Yes, we work with businesses globally across all time zones.' },
   { q: 'Can we schedule a call first?', a: 'Absolutely — mention it in the message and we\'ll send a calendar link.' },
 ]
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', company: '', service: '', message: '' })
+  const [form, setForm]     = useState({ name: '', email: '', company: '', service: '', message: '' })
   const [status, setStatus] = useState('idle')
 
   function handleChange(e) {
     setForm(f => ({ ...f, [e.target.name]: e.target.value }))
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
     setStatus('loading')
-    setTimeout(() => setStatus('success'), 1800)
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE,
+        EMAILJS_TEMPLATE,
+        {
+          from_name:  form.name,
+          from_email: form.email,
+          company:    form.company,
+          service:    form.service,
+          message:    form.message,
+        },
+        EMAILJS_PUBLIC,
+      )
+      setStatus('success')
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -87,6 +107,11 @@ export default function Contact() {
                   <div className="mb-8">
                     <h2 className="text-2xl font-black text-white mb-2">Send Us a Message</h2>
                     <p className="text-white/45 text-sm">Fill in the details below and we&apos;ll be in touch.</p>
+                    {status === 'error' && (
+                      <p className="mt-3 text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3">
+                        Something went wrong. Please try again or email us directly at hello@lucysolution.com
+                      </p>
+                    )}
                   </div>
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="grid sm:grid-cols-2 gap-5">
@@ -260,15 +285,15 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Map placeholder */}
+      {/* Location banner */}
       <section className="py-10 px-5">
         <div className="max-w-7xl mx-auto">
           <FadeUp>
             <div className="rounded-2xl overflow-hidden border border-white/8 bg-white/[0.02] h-56 flex items-center justify-center">
               <div className="text-center">
                 <MapPin size={28} className="text-white/20 mx-auto mb-3" />
-                <div className="text-sm text-white/30">Addis Ababa, Ethiopia</div>
-                <div className="text-xs text-white/20 mt-1">Map integration available upon request</div>
+                <div className="text-sm text-white/30">Worldwide · Remote-First</div>
+                <div className="text-xs text-white/20 mt-1">We work with clients across all time zones</div>
               </div>
             </div>
           </FadeUp>

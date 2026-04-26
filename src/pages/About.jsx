@@ -15,10 +15,8 @@ const values = [
 ]
 
 const team = [
-  { name: 'Kaldi', role: 'Founder & CEO', bio: 'Visionary leader with 10+ years in enterprise software', avatar: 'K' },
-  { name: 'Liya', role: 'Head of Engineering', bio: 'Full-stack architect specializing in scalable systems', avatar: 'L' },
-  { name: 'Biruk', role: 'Design Lead', bio: 'UX-focused designer creating intuitive product experiences', avatar: 'B' },
-  { name: 'Hana', role: 'Client Success', bio: 'Dedicated to ensuring every project exceeds expectations', avatar: 'H' },
+  { name: 'Yoseph Masresha', role: 'Founder & CEO', bio: 'Visionary leader with deep expertise in enterprise software and product strategy', avatar: 'YM', photo: '/team-yoseph.jpg' },
+  { name: 'Ferehiwot Biddle', role: 'Account Executive', bio: 'Dedicated to building lasting client relationships and ensuring every engagement exceeds expectations', avatar: 'FB', photo: '/team-ferehiwot.jpg' },
 ]
 
 export default function About() {
@@ -35,7 +33,7 @@ export default function About() {
               We Build Software That Matters
             </h1>
             <p className="text-xl text-white/55 leading-relaxed mb-8">
-              Kaldilabs is a software solutions company dedicated to building high-quality, scalable systems for modern businesses. We combine technical excellence with a relentless focus on client success.
+              Lucy Solution is a software solutions company dedicated to building high-quality, scalable systems for modern businesses worldwide. We combine technical excellence with a relentless focus on client success.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/contact" className="btn-primary">Work With Us <ArrowRight size={15} /></Link>
@@ -62,7 +60,7 @@ export default function About() {
               <div className="w-10 h-10 rounded-xl bg-violet-500/15 flex items-center justify-center text-violet-400 mb-5 text-lg">◈</div>
               <h2 className="text-2xl font-black text-white mb-3">Our Vision</h2>
               <p className="text-white/55 leading-relaxed">
-                To become the most trusted software partner for modern businesses across Africa and the world — known for our precision, reliability, and transformative impact.
+                To become the most trusted software partner for modern businesses worldwide — known for our precision, reliability, and transformative impact.
               </p>
             </div>
           </FadeUp>
@@ -98,14 +96,25 @@ export default function About() {
         <div className="max-w-7xl mx-auto">
           <FadeUp className="text-center max-w-xl mx-auto mb-12">
             <div className="section-tag mb-4">Team</div>
-            <h2 className="text-3xl font-black tracking-tight mb-3">The People Behind Kaldilabs</h2>
+            <h2 className="text-3xl font-black tracking-tight mb-3">The People Behind Lucy Solution</h2>
             <p className="text-white/50">A small, highly skilled team with a big impact.</p>
           </FadeUp>
           <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {team.map((member) => (
               <StaggerItem key={member.name}>
                 <div className="card-dark p-7 text-center">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center text-2xl font-black text-white mx-auto mb-4">
+                  {member.photo ? (
+                    <img
+                      src={member.photo}
+                      alt={member.name}
+                      className="w-20 h-20 rounded-2xl object-cover mx-auto mb-4"
+                      onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextSibling.style.display = 'flex' }}
+                    />
+                  ) : null}
+                  <div
+                    className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-violet-600 items-center justify-center text-2xl font-black text-white mx-auto mb-4"
+                    style={{ display: member.photo ? 'none' : 'flex' }}
+                  >
                     {member.avatar}
                   </div>
                   <h3 className="font-bold text-white mb-1">{member.name}</h3>
@@ -166,7 +175,7 @@ export default function About() {
               <div className="absolute inset-0 bg-hero-glow opacity-80" />
               <div className="relative">
                 <h2 className="text-3xl font-black text-white tracking-tight mb-3">Let&apos;s Work Together</h2>
-                <p className="text-white/50 mb-8">Reach out and let&apos;s discuss how Kaldilabs can help your business grow.</p>
+                <p className="text-white/50 mb-8">Reach out and let&apos;s discuss how Lucy Solution can help your business grow.</p>
                 <Link to="/contact" className="btn-primary">Get in Touch <ArrowRight size={15} /></Link>
               </div>
             </div>
