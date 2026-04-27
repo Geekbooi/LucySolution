@@ -1,5 +1,6 @@
+import { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 
 const EASE_OUT = [0.16, 1, 0.3, 1]
 
@@ -188,3 +189,72 @@ export function PressScale({ children, className, scale = 0.97, ...props }) {
   )
 }
 PressScale.propTypes = { ...childProps, scale: PropTypes.number }
+
+// ── Animated number counter ─────────────────────────────────────────────────
+export function CountUp({ from = 0, to, duration = 2.2, suffix = '', prefix = '', className }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const [display, setDisplay] = useState(from)
+
+  useEffect(() => {
+    if (!isInView) return
+    const start = performance.now()
+    const total = duration * 1000
+    const tick = (now) => {
+      const p = Math.min((now - start) / total, 1)
+      const eased = 1 - Math.pow(1 - p, 4)
+      setDisplay(Math.floor(from + (to - from) * eased))
+      if (p < 1) requestAnimationFrame(tick)
+    }
+    requestAnimationFrame(tick)
+  }, [isInView, from, to, duration])
+
+  return <span ref={ref} className={className}>{prefix}{display}{suffix}</span>
+}
+CountUp.propTypes = {
+  from: PropTypes.number, to: PropTypes.number.isRequired,
+  duration: PropTypes.number, suffix: PropTypes.string,
+  prefix: PropTypes.string, className: PropTypes.string,
+}
+
+// ── Word-by-word blur reveal ────────────────────────────────────────────────
+const wordFade = {
+  hidden: { opacity: 0, y: 14, filter: 'blur(6px)' },
+  visible: (i) => ({
+    opacity: 1, y: 0, filter: 'blur(0px)',
+    transition: { duration: 0.52, ease: EASE_OUT, delay: i * 0.07 },
+  }),
+}
+
+export function RevealWords({ children, className }) {
+  const words = String(children).split(' ')
+  return (
+    <motion.span
+      className={className}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-60px' }}
+    >
+      {words.map((word, i) => (
+        <motion.span key={i} variants={wordFade} custom={i} className="inline-block mr-[0.22em] last:mr-0">
+          {word}
+        </motion.span>
+      ))}
+    </motion.span>
+  )
+}
+RevealWords.propTypes = { children: PropTypes.node, className: PropTypes.string }
+
+// ── Hover-lift card ─────────────────────────────────────────────────────────
+export function FloatCard({ children, className }) {
+  return (
+    <motion.div
+      className={className}
+      whileHover={{ y: -10, scale: 1.015 }}
+      transition={{ duration: 0.32, ease: EASE_OUT }}
+    >
+      {children}
+    </motion.div>
+  )
+}
+FloatCard.propTypes = childProps

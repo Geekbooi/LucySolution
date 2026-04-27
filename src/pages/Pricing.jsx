@@ -68,7 +68,7 @@ const services = [
   {
     name: 'Software Development',
     tiers: [
-      { tier: 'Starter', price: '$1,500–$5,000', desc: 'Small web app or MVP' },
+      { tier: 'Starter', price: '$500–$5,000', desc: 'Small web app or MVP' },
       { tier: 'Growth', price: '$5,000–$20,000', desc: 'Full-featured application' },
       { tier: 'Professional', price: '$20,000+', desc: 'Enterprise-grade system' },
     ],
