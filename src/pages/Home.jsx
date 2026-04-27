@@ -9,6 +9,7 @@ import {
   Calendar, Users, BarChart2, ClipboardList,
   Shield, Zap, Clock,
 } from 'lucide-react'
+import LucyLogo from '../components/LucyLogo'
 import ShinyText from '../components/ShinyText'
 import {
   FadeUp, StaggerContainer, StaggerItem,
@@ -72,7 +73,7 @@ const caseStudies = [
 const testimonials = [
   { text: 'Lucy Solution delivered our ERP ahead of schedule with exceptional quality. Their team was communicative and genuinely invested in our success.', name: 'James Mitchell', role: 'CEO, Meridian Industries', avatar: 'JM', color: 'from-blue-500 to-violet-600' },
   { text: 'The school management system transformed how we operate. Intuitive, fast, and exactly what we needed — nothing more, nothing less.', name: 'Sarah Thompson', role: 'Director, Westfield Academy', avatar: 'ST', color: 'from-emerald-500 to-teal-600' },
-  { text: 'This team built the entire EthioSpeak web platform. Feature-complete, fast, and delivered on schedule. A truly professional engagement from discovery to launch.', name: 'Alex Carter', role: 'CTO, EthioSpeak', avatar: 'AC', color: 'from-violet-500 to-fuchsia-600' },
+  { text: 'This team built the entire EthioSpeak web platform. Feature-complete, fast, and delivered on schedule. A truly professional engagement from discovery to launch.', name: 'Ferehiwot Biddle', role: 'CEO, EthioSpeak', avatar: 'FB', color: 'from-violet-500 to-fuchsia-600' },
 ]
 
 const industries = [
@@ -139,28 +140,6 @@ const ctaOptions = [
   { label: 'Talk to a Specialist', desc: 'ERP, HR, or custom dev' },
   { label: 'Request a System Audit', desc: 'For your existing software' },
 ]
-
-// ── Announcement Bar ──────────────────────────────────────────────────────────
-function AnnouncementBar() {
-  return (
-    <div
-      className="flex items-center justify-center gap-2 py-2.5 px-4 text-sm"
-      style={{
-        background: 'rgba(59,130,246,0.07)',
-        borderBottom: '1px solid rgba(59,130,246,0.12)',
-      }}
-    >
-      <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse shrink-0" />
-      <span className="text-white/55 text-xs">Lucy Solution v2 — new ERP & analytics modules now live</span>
-      <Link
-        to="/solutions"
-        className="text-xs font-semibold inline-flex items-center gap-0.5 text-blue-400 hover:text-blue-300 transition-colors"
-      >
-        Explore <ArrowRight size={11} />
-      </Link>
-    </div>
-  )
-}
 
 // ── Navbar ────────────────────────────────────────────────────────────────────
 const NAV_LINKS = [
@@ -1352,7 +1331,6 @@ function KaldiFooter() {
 export default function Home() {
   return (
     <div style={{ background: 'var(--surface-base)' }}>
-      <AnnouncementBar />
       <KaldiNavbar />
       <HeroSection />
       <TrustMarquee />

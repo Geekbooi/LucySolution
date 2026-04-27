@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X, ChevronDown, ArrowRight, Search } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import LucyLogo from './LucyLogo'
 
 const navItems = [
   { label: 'Home', path: '/' },
@@ -129,15 +130,8 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
 
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2.5 group shrink-0">
-          <div className="w-8 h-8 rounded-[10px] bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center
-                          shadow-lg shadow-blue-500/30 group-hover:shadow-blue-500/50 transition-shadow duration-300">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M2 8l3-3 3 3 3-3 3 3" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M2 12l3-3 3 3 3-3 3 3" stroke="white" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" opacity="0.5"/>
-            </svg>
-          </div>
-          <span className="font-extrabold text-[17px] tracking-tight text-white">Kaldilabs</span>
+        <Link to="/" className="shrink-0 group">
+          <LucyLogo size={32} />
         </Link>
 
         {/* Desktop Nav */}

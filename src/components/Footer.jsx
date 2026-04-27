@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Mail, Globe, ArrowRight } from 'lucide-react'
+import LucyLogo from './LucyLogo'
 
 const socials = [
   {
@@ -119,14 +120,8 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2.5 mb-5 w-fit">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M2 8l3-3 3 3 3-3 3 3" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M2 12l3-3 3 3 3-3 3 3" stroke="white" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" opacity="0.5"/>
-                </svg>
-              </div>
-              <span className="font-bold text-lg text-white">Lucy Solution</span>
+            <Link to="/" className="mb-5 w-fit block">
+              <LucyLogo size={30} wordmarkSize="text-base" />
             </Link>
             <p className="text-sm text-white/45 leading-relaxed max-w-xs mb-6">
               Building smart software solutions for modern businesses. Your partner from concept to long-term success.
