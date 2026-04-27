@@ -66,9 +66,9 @@ export default function SolutionDetail() {
               </div>
             </SlideLeft>
             <SlideRight>
-              {/* Mock dashboard card */}
-              <div className={`rounded-3xl bg-gradient-to-br from-[#0f172a] to-[#1a1a2e] border border-white/10 p-8 shadow-2xl`}>
-                <div className="flex items-center justify-between mb-6">
+              {/* Mock dashboard card — unique per solution */}
+              <div className="rounded-3xl bg-gradient-to-br from-[#0f172a] to-[#1a1a2e] border border-white/10 p-8 shadow-2xl">
+                <div className="flex items-center justify-between mb-5">
                   <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${sol.color} flex items-center justify-center text-white text-lg`}>{sol.icon}</div>
                   <div className="flex gap-2">
                     {['bg-red-500','bg-yellow-500','bg-green-500'].map(c=>(
@@ -76,19 +76,27 @@ export default function SolutionDetail() {
                     ))}
                   </div>
                 </div>
-                <h3 className="font-bold text-white mb-1">{sol.title} Dashboard</h3>
-                <p className="text-xs text-white/35 mb-6">{sol.subtitle}</p>
-                <div className="grid grid-cols-2 gap-3 mb-4">
-                  {[['Active Users','1,284'],['Uptime','99.9%'],['Tasks Done','94%'],['Reports','42 New']].map(([k,v])=>(
-                    <div key={k} className="bg-white/4 rounded-xl p-3">
-                      <div className="text-xs text-white/35 mb-1">{k}</div>
-                      <div className="text-base font-bold text-white">{v}</div>
+                <h3 className="font-bold text-white mb-0.5">{sol.mock.label}</h3>
+                <p className="text-xs text-white/35 mb-5">{sol.subtitle}</p>
+                <div className="grid grid-cols-2 gap-2.5 mb-4">
+                  {sol.mock.stats.map(([k, v]) => (
+                    <div key={k} className="bg-white/[0.04] rounded-xl p-3">
+                      <div className="text-[10px] text-white/35 mb-1 uppercase tracking-wide">{k}</div>
+                      <div className="text-sm font-bold text-white">{v}</div>
                     </div>
                   ))}
                 </div>
-                <div className="h-16 bg-white/3 rounded-xl flex items-end gap-1 px-3 pb-2 overflow-hidden">
-                  {[40,65,55,80,70,90,60,75,85,70,95,88].map((h,i)=>(
-                    <div key={i} className={`flex-1 rounded-t-sm bg-gradient-to-t ${sol.color} opacity-70`} style={{height:`${h}%`}} />
+                <div className="h-14 bg-white/[0.03] rounded-xl flex items-end gap-[3px] px-3 pb-2 mb-4 overflow-hidden">
+                  {sol.mock.bars.map((h, i) => (
+                    <div key={i} className={`flex-1 rounded-t-sm bg-gradient-to-t ${sol.color} opacity-60`} style={{height:`${h}%`}} />
+                  ))}
+                </div>
+                <div className="space-y-2">
+                  {sol.mock.activity.map((item) => (
+                    <div key={item} className="flex items-center gap-2.5 text-[11px] text-white/40">
+                      <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-br ${sol.color} shrink-0`} />
+                      {item}
+                    </div>
                   ))}
                 </div>
               </div>

@@ -11,6 +11,9 @@ import ServiceDetail from './pages/ServiceDetail'
 import Pricing from './pages/Pricing'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import Privacy from './pages/Privacy'
+import Terms from './pages/Terms'
+import Cookies from './pages/Cookies'
 import DesignPro from './pages/DesignPro'
 
 function ScrollReset() {
@@ -59,6 +62,9 @@ export default function App() {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/cookies" element={<Cookies />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -81,7 +81,7 @@ export default function ServiceDetail() {
           <SlideRight>
             <div className="card-dark p-8 h-full">
               <div className="section-tag mb-5">Why Us</div>
-              <h3 className="text-2xl font-bold text-white mb-6">Why Choose Kaldilabs</h3>
+              <h3 className="text-2xl font-bold text-white mb-6">Why Choose Lucy Solution</h3>
               <div className="space-y-4">
                 {srv.whyUs.map((w) => (
                   <div key={w} className="flex items-start gap-3">

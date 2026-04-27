@@ -1,7 +1,13 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Mail, Globe, ArrowRight } from 'lucide-react'
+import emailjs from '@emailjs/browser'
 import LucyLogo from './LucyLogo'
+
+const EMAILJS_SERVICE        = 'service_0xgkkys'
+const EMAILJS_PUBLIC         = 'Zf9zR5kW7q8WlKnuE'
+const TEMPLATE_NOTIFY_ADMIN  = 'template_lckkz0g'
+// const TEMPLATE_CONFIRM_SUB   = 'template_newsletter_confirm'  // uncomment once created in EmailJS
 
 const socials = [
   {
@@ -40,15 +46,22 @@ const footerLinks = {
     { label: 'Contact',  path: '/contact' },
   ],
   Solutions: [
-    { label: 'ERP Systems',       path: '/solutions/erp-systems' },
-    { label: 'HR Management',     path: '/solutions/hr-management' },
-    { label: 'School Management', path: '/solutions/school-management' },
-    { label: 'Custom Web Apps',   path: '/solutions/custom-web-apps' },
+    { label: 'ERP Systems',        path: '/solutions/erp-systems' },
+    { label: 'HR Management',      path: '/solutions/hr-management' },
+    { label: 'School Management',  path: '/solutions/school-management' },
+    { label: 'Custom Web Apps',    path: '/solutions/custom-web-apps' },
+    { label: 'AI & Automation',    path: '/solutions/ai-automation' },
+    { label: 'SaaS Platforms',     path: '/solutions/saas-platforms' },
+    { label: 'Payment & Billing',  path: '/solutions/payment-billing' },
+    { label: 'Data & Analytics',   path: '/solutions/data-analytics' },
   ],
   Services: [
-    { label: 'Software Development',   path: '/services/software-development' },
-    { label: 'Training & Consultancy', path: '/services/training-consultancy' },
-    { label: 'Support & Maintenance',  path: '/services/support-maintenance' },
+    { label: 'Engineering & Development', path: '/services/software-development' },
+    { label: 'AI & Automation',           path: '/services/ai-automation' },
+    { label: 'Cloud & DevOps',            path: '/services/cloud-devops' },
+    { label: 'Consulting & Strategy',     path: '/services/training-consultancy' },
+    { label: 'Data & Analytics',          path: '/services/data-analytics' },
+    { label: 'Support & Maintenance',     path: '/services/support-maintenance' },
   ],
 }
 
@@ -56,14 +69,27 @@ function NewsletterTeaser() {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState('idle')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (!email.trim()) return
     setStatus('loading')
-    setTimeout(() => {
+    try {
+      // Notify admin
+      await emailjs.send(EMAILJS_SERVICE, TEMPLATE_NOTIFY_ADMIN, {
+        subscriber_email: email,
+      }, EMAILJS_PUBLIC)
+
+      // Send confirmation to subscriber (add template ID once created in EmailJS)
+      // await emailjs.send(EMAILJS_SERVICE, TEMPLATE_CONFIRM_SUB, {
+      //   subscriber_email: email,
+      //   to_email: email,
+      // }, EMAILJS_PUBLIC)
+
       setStatus('success')
       setEmail('')
-    }, 900)
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -76,13 +102,17 @@ function NewsletterTeaser() {
       {status === 'success' ? (
         <div className="flex items-center gap-3 text-sm text-white/75">
           <span className="w-6 h-6 rounded-full bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-emerald-400 text-xs">✓</span>
-          <span>You&apos;re in! We&apos;ll be in touch with the latest updates.</span>
+          <span>You&apos;re in! Confirmation sent — we&apos;ll keep you updated.</span>
         </div>
       ) : (
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
           <div>
             <h3 className="text-base font-bold text-white mb-0.5">Stay in the loop</h3>
-            <p className="text-sm text-white/45">Product news, engineering insights, and exclusive offers.</p>
+            <p className="text-sm text-white/45">
+              {status === 'error'
+                ? 'Something went wrong — please try again.'
+                : 'Product news, engineering insights, and exclusive offers.'}
+            </p>
           </div>
           <form
             onSubmit={handleSubmit}
@@ -92,7 +122,7 @@ function NewsletterTeaser() {
             <input
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => { setEmail(e.target.value); if (status === 'error') setStatus('idle') }}
               placeholder="you@company.com"
               required
               aria-label="Email address"
@@ -101,9 +131,16 @@ function NewsletterTeaser() {
             <button
               type="submit"
               disabled={status === 'loading'}
-              className={`btn-primary btn-sm whitespace-nowrap flex items-center gap-1.5 ${status === 'loading' ? 'btn-loading' : ''}`}
+              className="btn-primary btn-sm whitespace-nowrap flex items-center gap-1.5 disabled:opacity-60"
             >
-              {status !== 'loading' && <>Subscribe <ArrowRight size={13} /></>}
+              {status === 'loading' ? (
+                <svg className="animate-spin h-3.5 w-3.5" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+                </svg>
+              ) : (
+                <>Subscribe <ArrowRight size={13} /></>
+              )}
             </button>
           </form>
         </div>
@@ -184,11 +221,11 @@ export default function Footer() {
 
           {/* Legal links */}
           <div className="flex items-center gap-4 text-xs text-white/30">
-            <a href="#" className="hover:text-white/55 transition-colors">Privacy</a>
+            <Link to="/privacy" className="hover:text-white/55 transition-colors">Privacy</Link>
             <span className="w-px h-3 bg-white/10" />
-            <a href="#" className="hover:text-white/55 transition-colors">Terms</a>
+            <Link to="/terms" className="hover:text-white/55 transition-colors">Terms</Link>
             <span className="w-px h-3 bg-white/10" />
-            <a href="#" className="hover:text-white/55 transition-colors">Cookies</a>
+            <Link to="/cookies" className="hover:text-white/55 transition-colors">Cookies</Link>
           </div>
         </div>
       </div>

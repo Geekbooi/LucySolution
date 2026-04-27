@@ -66,7 +66,7 @@ const plans = [
 
 const services = [
   {
-    name: 'Software Development',
+    name: 'Engineering & Development',
     tiers: [
       { tier: 'Starter', price: '$500–$5,000', desc: 'Small web app or MVP' },
       { tier: 'Growth', price: '$5,000–$20,000', desc: 'Full-featured application' },
@@ -74,11 +74,35 @@ const services = [
     ],
   },
   {
-    name: 'Training & Consultancy',
+    name: 'AI & Automation',
+    tiers: [
+      { tier: 'Starter', price: '$1,000–$5,000', desc: 'Single workflow automation' },
+      { tier: 'Growth', price: '$5,000–$15,000', desc: 'Multi-process AI integration' },
+      { tier: 'Professional', price: '$15,000+', desc: 'Enterprise AI platform' },
+    ],
+  },
+  {
+    name: 'Cloud & DevOps',
+    tiers: [
+      { tier: 'Starter', price: '$800–$3,000', desc: 'Basic CI/CD & cloud setup' },
+      { tier: 'Growth', price: '$3,000–$8,000', desc: 'Full infrastructure & pipelines' },
+      { tier: 'Professional', price: '$8,000+', desc: 'Enterprise-scale DevOps' },
+    ],
+  },
+  {
+    name: 'Consulting & Strategy',
     tiers: [
       { tier: 'Starter', price: '$199/session', desc: '2-hour focused workshop' },
       { tier: 'Growth', price: '$1,200/week', desc: 'Full team training program' },
       { tier: 'Professional', price: 'Custom', desc: 'Embedded consultant' },
+    ],
+  },
+  {
+    name: 'Data & Analytics',
+    tiers: [
+      { tier: 'Starter', price: '$1,000–$4,000', desc: 'Basic dashboard & reporting' },
+      { tier: 'Growth', price: '$4,000–$12,000', desc: 'Full BI platform & pipelines' },
+      { tier: 'Professional', price: '$12,000+', desc: 'Enterprise data platform' },
     ],
   },
   {

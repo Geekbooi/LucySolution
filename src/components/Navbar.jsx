@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { Menu, X, ChevronDown, ArrowRight, Search } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import LucyLogo from './LucyLogo'
+import CommandPalette from './CommandPalette'
 
 const navItems = [
   { label: 'Home', path: '/' },
@@ -11,21 +12,28 @@ const navItems = [
     label: 'Solutions',
     path: '/solutions',
     children: [
-      { label: 'ERP Systems',         path: '/solutions/erp-systems',         desc: 'Unified business operations' },
-      { label: 'HR Management',       path: '/solutions/hr-management',       desc: 'People & performance tools' },
-      { label: 'Cost Management',     path: '/solutions/cost-management',     desc: 'Spend & budget control' },
-      { label: 'School Management',   path: '/solutions/school-management',   desc: 'Education platforms' },
-      { label: 'Project Management',  path: '/solutions/project-management',  desc: 'Task & delivery tracking' },
-      { label: 'Custom Web Apps',     path: '/solutions/custom-web-apps',     desc: 'Tailored digital solutions' },
+      { label: 'ERP Systems',            path: '/solutions/erp-systems',         desc: 'Unified business operations' },
+      { label: 'HR Management',          path: '/solutions/hr-management',       desc: 'People & performance tools' },
+      { label: 'School Management',      path: '/solutions/school-management',   desc: 'Education platforms' },
+      { label: 'Project Management',     path: '/solutions/project-management',  desc: 'Task & delivery tracking' },
+      { label: 'Cost Management',        path: '/solutions/cost-management',     desc: 'Spend & budget control' },
+      { label: 'Custom Web Apps',        path: '/solutions/custom-web-apps',     desc: 'Tailored digital solutions' },
+      { label: 'AI & Automation',        path: '/solutions/ai-automation',       desc: 'Intelligent process automation' },
+      { label: 'SaaS Platforms',         path: '/solutions/saas-platforms',      desc: 'Multi-tenant cloud software' },
+      { label: 'Payment & Billing',      path: '/solutions/payment-billing',     desc: 'Secure financial infrastructure' },
+      { label: 'Data & Analytics',       path: '/solutions/data-analytics',      desc: 'BI dashboards & pipelines' },
     ],
   },
   {
     label: 'Services',
     path: '/services',
     children: [
-      { label: 'Software Development', path: '/services/software-development', desc: 'End-to-end product engineering' },
-      { label: 'Training & Consultancy', path: '/services/training-consultancy', desc: 'Upskill your team' },
-      { label: 'Support & Maintenance', path: '/services/support-maintenance', desc: 'Ongoing care & reliability' },
+      { label: 'Engineering & Development', path: '/services/software-development', desc: 'End-to-end product engineering' },
+      { label: 'AI & Automation',           path: '/services/ai-automation',         desc: 'Intelligent workflow automation' },
+      { label: 'Cloud & DevOps',            path: '/services/cloud-devops',          desc: 'Infrastructure & CI/CD' },
+      { label: 'Consulting & Strategy',     path: '/services/training-consultancy',  desc: 'Tech strategy & upskilling' },
+      { label: 'Data & Analytics',          path: '/services/data-analytics',        desc: 'BI & data engineering' },
+      { label: 'Support & Maintenance',     path: '/services/support-maintenance',   desc: 'Ongoing care & reliability' },
     ],
   },
   { label: 'Pricing', path: '/pricing' },
@@ -85,6 +93,7 @@ export default function Navbar() {
   const [scrollProgress, setScrollProgress] = useState(0)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
+  const [paletteOpen, setPaletteOpen] = useState(false)
   const location = useLocation()
   const timeoutRef = useRef(null)
 
@@ -98,7 +107,18 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => { setMobileOpen(false); setActiveDropdown(null) }, [location])
+  useEffect(() => { setMobileOpen(false); setActiveDropdown(null); setPaletteOpen(false) }, [location])
+
+  useEffect(() => {
+    const handler = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault()
+        setPaletteOpen(o => !o)
+      }
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [])
 
   const handleMouseEnter = (label) => {
     clearTimeout(timeoutRef.current)
@@ -109,6 +129,7 @@ export default function Navbar() {
   }
 
   return (
+    <>
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled ? 'shadow-2xl shadow-black/50' : ''
@@ -190,6 +211,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-3">
           {/* Command palette trigger */}
           <button
+            onClick={() => setPaletteOpen(true)}
             className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm
                        bg-white/[0.04] border border-white/8 text-white/40
                        hover:text-white/65 hover:bg-white/[0.07] transition-all duration-200"
@@ -288,5 +310,8 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </header>
+
+    <CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)} />
+  </>
   )
 }

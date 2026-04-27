@@ -9,7 +9,6 @@ import {
   Calendar, Users, BarChart2, ClipboardList,
   Shield, Zap, Clock,
 } from 'lucide-react'
-import LucyLogo from '../components/LucyLogo'
 import ShinyText from '../components/ShinyText'
 import {
   FadeUp, StaggerContainer, StaggerItem,
@@ -1233,19 +1232,26 @@ const FOOTER_COLS = [
   {
     heading: 'Solutions',
     links: [
-      { label: 'ERP Systems', to: '/solutions/erp-systems' },
-      { label: 'HR Management', to: '/solutions/hr-management' },
+      { label: 'ERP Systems',       to: '/solutions/erp-systems' },
+      { label: 'HR Management',     to: '/solutions/hr-management' },
       { label: 'School Management', to: '/solutions/school-management' },
-      { label: 'Project Management', to: '/solutions/project-management' },
-      { label: 'Custom Web Apps', to: '/solutions/custom-web-apps' },
+      { label: 'Project Management',to: '/solutions/project-management' },
+      { label: 'Custom Web Apps',   to: '/solutions/custom-web-apps' },
+      { label: 'AI & Automation',   to: '/solutions/ai-automation' },
+      { label: 'SaaS Platforms',    to: '/solutions/saas-platforms' },
+      { label: 'Payment & Billing', to: '/solutions/payment-billing' },
+      { label: 'Data & Analytics',  to: '/solutions/data-analytics' },
     ],
   },
   {
     heading: 'Services',
     links: [
-      { label: 'Software Development', to: '/services/software-development' },
-      { label: 'Training & Consultancy', to: '/services/training-consultancy' },
-      { label: 'Support & Maintenance', to: '/services/support-maintenance' },
+      { label: 'Engineering & Development', to: '/services/software-development' },
+      { label: 'AI & Automation',           to: '/services/ai-automation' },
+      { label: 'Cloud & DevOps',            to: '/services/cloud-devops' },
+      { label: 'Consulting & Strategy',     to: '/services/training-consultancy' },
+      { label: 'Data & Analytics',          to: '/services/data-analytics' },
+      { label: 'Support & Maintenance',     to: '/services/support-maintenance' },
     ],
   },
   {
@@ -1259,8 +1265,8 @@ const FOOTER_COLS = [
   {
     heading: 'Legal',
     links: [
-      { label: 'Privacy Policy', to: '#' },
-      { label: 'Terms of Service', to: '#' },
+      { label: 'Privacy Policy', to: '/privacy' },
+      { label: 'Terms of Service', to: '/terms' },
     ],
   },
 ]
@@ -1317,8 +1323,8 @@ function KaldiFooter() {
         >
           <p className="text-xs text-white/22">© 2026 Lucy Solution. All rights reserved.</p>
           <div className="flex items-center gap-4 text-xs text-white/25">
-            <Link to="#" className="hover:text-white/50 transition-colors">Privacy</Link>
-            <Link to="#" className="hover:text-white/50 transition-colors">Terms</Link>
+            <Link to="/privacy" className="hover:text-white/50 transition-colors">Privacy</Link>
+            <Link to="/terms" className="hover:text-white/50 transition-colors">Terms</Link>
             <a href="mailto:hello@lucysolution.com" className="hover:text-white/50 transition-colors">hello@lucysolution.com</a>
           </div>
         </div>
