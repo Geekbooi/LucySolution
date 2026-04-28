@@ -73,6 +73,7 @@ const testimonials = [
   { text: 'Lucy Solution delivered our ERP ahead of schedule with exceptional quality. Their team was communicative and genuinely invested in our success.', name: 'James Mitchell', role: 'CEO, Meridian Industries', avatar: 'JM', color: 'from-blue-500 to-violet-600' },
   { text: 'The school management system transformed how we operate. Intuitive, fast, and exactly what we needed — nothing more, nothing less.', name: 'Sarah Thompson', role: 'Director, Westfield Academy', avatar: 'ST', color: 'from-emerald-500 to-teal-600' },
   { text: 'This team built the entire EthioSpeak web platform. Feature-complete, fast, and delivered on schedule. A truly professional engagement from discovery to launch.', name: 'Ferehiwot Biddle', role: 'CEO, EthioSpeak', avatar: 'FB', color: 'from-violet-500 to-fuchsia-600' },
+  { text: 'Lucy Solution built our law firm website with professionalism and precision. They understood our brand immediately and delivered a polished, client-ready platform we are proud to share.', name: 'Eyasu Mekonen', role: 'Attorney, Eyasu Law Firm', avatar: 'EM', color: 'from-amber-500 to-orange-600' },
 ]
 
 const industries = [
@@ -372,7 +373,7 @@ function HeroSection() {
 // ── Trust Marquee ─────────────────────────────────────────────────────────────
 const CLIENTS = [
   'Meridian Industries', 'Westfield Academy', 'NovaTech Corp',
-  'EthioSpeak', 'Apex Pharma', 'Sunrise School', 'Horizon Finance',
+  'EthioSpeak', 'Eyasu Law Firm', 'Apex Pharma', 'Sunrise School', 'Horizon Finance',
   'Peak Logistics', 'BlueSky Retail', 'Atlas Trade Co.',
 ]
 
