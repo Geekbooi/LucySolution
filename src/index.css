@@ -13,10 +13,10 @@
 
   :root {
     /* Surface scale */
-    --surface-base:    #06060f;
-    --surface-raised:  #0e0e32;
-    --surface-overlay: #1a1a4a;
-    --surface-high:    #222262;
+    --surface-base:    #06080f;
+    --surface-raised:  #0d1030;
+    --surface-overlay: rgba(255,255,255,0.07);
+    --surface-high:    rgba(255,255,255,0.12);
 
     /* Foreground */
     --fg:        #EDEDEF;
@@ -44,11 +44,15 @@
 
   body {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: #06060f;
+    background-color: #060910;
     background-image:
-      radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px),
-      radial-gradient(ellipse 130% 55% at 50% -6%, rgba(59,130,246,0.14) 0%, transparent 58%);
-    background-size: 28px 28px, 100% 100%;
+      radial-gradient(circle, rgba(255,255,255,0.024) 1px, transparent 1px),
+      radial-gradient(ellipse 80% 60% at -8% 10%, rgba(59,130,246,0.32) 0%, transparent 52%),
+      radial-gradient(ellipse 60% 55% at 108% 55%, rgba(124,58,237,0.26) 0%, transparent 52%),
+      radial-gradient(ellipse 65% 40% at 50% 108%, rgba(99,102,241,0.2) 0%, transparent 52%),
+      linear-gradient(155deg, #0d0b28 0%, #070b20 30%, #06050f 65%, #030608 100%);
+    background-size: 24px 24px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    background-attachment: fixed;
     color: var(--fg);
     font-size: 15px;
     line-height: 1.6;
@@ -248,19 +252,21 @@
   /* ── Standard dark card ─────────────────────────────────── */
 
   .card-dark {
-    background: rgba(255,255,255,0.032);
-    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.055);
+    border: 1px solid rgba(255,255,255,0.1);
     border-radius: 20px;
-    box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 2px 8px rgba(0,0,0,0.3);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 4px 24px rgba(0,0,0,0.35);
     transition: background 0.25s var(--ease-smooth), border-color 0.25s var(--ease-smooth),
                 transform 0.3s var(--ease-spring), box-shadow 0.3s var(--ease-smooth);
   }
   .card-dark:hover {
-    background: rgba(255,255,255,0.055);
-    border-color: rgba(59,130,246,0.22);
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(59,130,246,0.3);
     transform: translateY(-4px);
-    box-shadow: 0 20px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(59,130,246,0.1),
-                0 1px 0 rgba(255,255,255,0.06) inset;
+    box-shadow: 0 20px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(59,130,246,0.15),
+                0 1px 0 rgba(255,255,255,0.1) inset;
   }
 
   /* ── Glass card ─────────────────────────────────────────── */
@@ -278,10 +284,12 @@
 
   .card-gradient-border {
     position: relative;
-    background: rgba(255,255,255,0.032);
-    border: 1px solid transparent;
+    background: rgba(255,255,255,0.055);
+    border: 1px solid rgba(255,255,255,0.1);
     border-radius: 20px;
-    box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 2px 8px rgba(0,0,0,0.3);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 4px 24px rgba(0,0,0,0.35);
     transition: transform 0.3s var(--ease-spring), box-shadow 0.3s var(--ease-smooth),
                 background 0.25s var(--ease-smooth);
   }

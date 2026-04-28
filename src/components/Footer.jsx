@@ -151,7 +151,7 @@ function NewsletterTeaser() {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/[0.08]" style={{ background: '#06060f' }}>
+    <footer className="border-t border-white/[0.08]" style={{ background: 'rgba(4,5,16,0.72)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' }}>
       <div className="max-w-7xl mx-auto px-5 pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
 

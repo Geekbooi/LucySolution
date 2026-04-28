@@ -40,7 +40,7 @@ export default function About() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-20 px-5 border-t border-white/[0.08]" style={{ background: 'linear-gradient(180deg, #161645 0%, #0e0e32 100%)' }}>
+      <section className="py-20 px-5 border-t border-white/[0.08]" style={{ background: 'rgba(255,255,255,0.04)' }}>
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-6">
           <FadeUp delay={0}>
             <div className="card-dark p-8 h-full">
@@ -112,7 +112,7 @@ export default function About() {
       </section>
 
       {/* Stats */}
-      <section className="py-20 px-5 border-t border-white/[0.08]" style={{ background: 'linear-gradient(180deg, #161645 0%, #0e0e32 100%)' }}>
+      <section className="py-20 px-5 border-t border-white/[0.08]" style={{ background: 'rgba(255,255,255,0.04)' }}>
         <div className="max-w-7xl mx-auto">
           <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-5">
             {[['50+','Projects Delivered'],['98%','Client Satisfaction'],['5+','Years of Experience'],['24/7','Support Available']].map(([num, lbl]) => (
