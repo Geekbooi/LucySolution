@@ -1018,7 +1018,7 @@ function SolutionsSection() {
           </p>
         </FadeUp>
         <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {solutions.map((sol) => (
+          {solutions.filter(s => ['erp-systems','hr-management','school-management','ai-automation','saas-platforms','custom-web-apps'].includes(s.slug)).map((sol) => (
             <StaggerItem key={sol.slug}>
               <Link
                 to={`/solutions/${sol.slug}`}
@@ -1063,13 +1063,13 @@ function ServicesSection() {
           </p>
         </FadeUp>
         <StaggerContainer className="grid md:grid-cols-3 gap-5">
-          {services.map((srv) => (
+          {services.filter(s => ['software-development','ai-automation','cloud-devops'].includes(s.slug)).map((srv) => (
             <StaggerItem key={srv.slug}>
               <FloatCard className="h-full">
                 <Link to={`/services/${srv.slug}`} className="card-gradient-border flex flex-col p-8 group h-full">
                   <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${srv.color} flex items-center justify-center mb-6 shadow-lg shrink-0`}>
                     <span className="text-white text-lg font-bold">
-                      {srv.icon === 'code' ? '{ }' : srv.icon === 'users' ? '◎' : '⟳'}
+                      {srv.icon === 'code' ? '{ }' : srv.icon === 'cpu' ? '⬟' : srv.icon === 'cloud' ? '⬡' : srv.icon === 'users' ? '◎' : '⟳'}
                     </span>
                   </div>
                   <h3 className="text-lg font-bold text-white mb-2">{srv.title}</h3>
@@ -1082,6 +1082,9 @@ function ServicesSection() {
             </StaggerItem>
           ))}
         </StaggerContainer>
+        <FadeUp className="text-center mt-12">
+          <Link to="/services" className="btn-secondary">View All Services <ArrowRight size={15} /></Link>
+        </FadeUp>
       </div>
     </section>
   )
