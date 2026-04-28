@@ -46,11 +46,17 @@
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: #09090e;
     background-image:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"),
+      /* 1 — anisotropic fractal grain (X≠Y frequency → film-grain feel) */
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65 0.88' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23g)' opacity='0.055'/%3E%3C/svg%3E"),
+      /* 2 — edge vignette: darkens corners, pulls focus to content */
+      radial-gradient(ellipse 85% 75% at 50% 42%, transparent 45%, rgba(0,0,0,0.36) 100%),
+      /* 3 — blue ambient blob — top-left */
       radial-gradient(ellipse 120% 90% at -12% -5%, rgba(96,165,250,0.09) 0%, transparent 58%),
+      /* 4 — violet ambient blob — right */
       radial-gradient(ellipse 100% 80% at 112% 45%, rgba(167,139,250,0.08) 0%, transparent 58%),
+      /* 5 — indigo ambient blob — bottom */
       radial-gradient(ellipse 85% 65% at 50% 112%, rgba(99,102,241,0.07) 0%, transparent 58%);
-    background-size: 200px 200px, 100% 100%, 100% 100%, 100% 100%;
+    background-size: 250px 250px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
     background-attachment: fixed;
     color: var(--fg);
     font-size: 15px;
@@ -59,6 +65,20 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100dvh;
+  }
+
+  /* Grid overlay — dot lattice mask that fades at horizontal edges */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px);
+    background-size: 28px 28px;
+    -webkit-mask-image: radial-gradient(ellipse 90% 100% at 50% 50%, black 30%, transparent 100%);
+    mask-image: radial-gradient(ellipse 90% 100% at 50% 50%, black 30%, transparent 100%);
+    opacity: 0.6;
   }
 
   /* Scrollbar */
