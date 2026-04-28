@@ -37,10 +37,10 @@ export default {
       },
       colors: {
         surface: {
-          base:     '#050506',
-          raised:   '#0a0a0d',
-          overlay:  '#0f0f14',
-          high:     '#141419',
+          base:     '#07070e',
+          raised:   '#0c0c18',
+          overlay:  '#101020',
+          high:     '#141428',
         },
         ink: {
           DEFAULT: '#EDEDEF',

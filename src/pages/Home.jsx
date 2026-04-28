@@ -413,11 +413,9 @@ function PositionStatement() {
   return (
     <section
       ref={ref}
-      className="py-28 md:py-36 px-6 md:px-14 text-center relative overflow-hidden"
-      style={{ background: 'rgba(6,6,24,0.75)' }}
+      className="py-28 md:py-36 px-6 md:px-14 text-center"
+      style={{ background: 'var(--surface-raised)', borderTop: '1px solid rgba(255,255,255,0.055)' }}
     >
-      <div className="absolute top-0 inset-x-0 h-px pointer-events-none" style={{ background: 'linear-gradient(90deg, transparent, rgba(59,130,246,0.18) 30%, rgba(94,106,210,0.18) 70%, transparent)' }} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] rounded-full blur-[150px] pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(37,99,235,0.09), transparent 70%)' }} />
       <motion.div style={{ opacity, y }} className="max-w-4xl mx-auto">
         <div className="section-tag inline-flex mb-6">The Lucy Solution Difference</div>
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.08] mb-6">
@@ -677,10 +675,9 @@ FeatureSection.propTypes = {
 function FeatureSection({ label, heading, body, linkText = 'Learn more', linkTo = '/solutions', mockup, reverse = false }) {
   return (
     <section
-      className="py-24 md:py-28 px-6 md:px-14 relative overflow-hidden"
-      style={{ background: 'rgba(4,4,18,0.65)' }}
+      className="py-24 md:py-28 px-6 md:px-14"
+      style={{ background: 'var(--surface-base)', borderTop: '1px solid rgba(255,255,255,0.055)' }}
     >
-      <div className="absolute top-0 inset-x-0 h-px pointer-events-none" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 40%, rgba(255,255,255,0.06) 60%, transparent)' }} />
       <div className={`max-w-6xl mx-auto flex flex-col ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-14 md:gap-20`}>
 
         {/* Text */}
@@ -725,10 +722,8 @@ function FeatureSection({ label, heading, body, linkText = 'Learn more', linkTo 
 // ── Tech Stack Section ────────────────────────────────────────────────────────
 function TechStackSection() {
   return (
-    <section className="py-20 px-6 md:px-14 relative overflow-hidden" style={{ background: 'rgba(6,6,24,0.8)' }}>
-      <div className="absolute top-0 inset-x-0 h-px pointer-events-none" style={{ background: 'linear-gradient(90deg, transparent, rgba(59,130,246,0.14) 30%, rgba(255,255,255,0.08) 70%, transparent)' }} />
-      <div className="absolute -top-24 right-0 w-[450px] h-[350px] rounded-full blur-[110px] pointer-events-none" style={{ background: 'rgba(37,99,235,0.08)' }} />
-      <div className="max-w-6xl mx-auto relative">
+    <section className="py-20 px-6 md:px-14" style={{ background: 'var(--surface-raised)', borderTop: '1px solid rgba(255,255,255,0.055)' }}>
+      <div className="max-w-6xl mx-auto">
         <FadeUp className="text-center mb-12">
           <div className="section-tag inline-flex mb-4">Built With</div>
           <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
@@ -762,12 +757,8 @@ function TechStackSection() {
 // ── Methodology Section ───────────────────────────────────────────────────────
 function MethodologySection() {
   return (
-    <section className="py-28 px-6 md:px-14 relative overflow-hidden" style={{ background: 'rgba(4,4,18,0.65)' }}>
-      <div className="absolute top-0 inset-x-0 h-px pointer-events-none" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 40%, rgba(255,255,255,0.06) 60%, transparent)' }} />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full blur-[120px] pointer-events-none" style={{ background: 'rgba(94,106,210,0.07)' }} />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_50%,rgba(59,130,246,0.04),transparent_70%)] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto relative">
+    <section className="py-28 px-6 md:px-14" style={{ background: 'var(--surface-base)', borderTop: '1px solid rgba(255,255,255,0.055)' }}>
+      <div className="max-w-7xl mx-auto">
         <FadeUp className="text-center max-w-2xl mx-auto mb-16">
           <div className="section-tag inline-flex mb-4">Methodology</div>
           <h2 className="text-4xl font-extrabold tracking-tight mb-4">
@@ -826,10 +817,8 @@ function MethodologySection() {
 // ── Case Studies ──────────────────────────────────────────────────────────────
 function CaseStudiesSection() {
   return (
-    <section className="py-28 px-6 md:px-14 relative overflow-hidden" style={{ background: 'rgba(6,6,24,0.8)' }}>
-      <div className="absolute top-0 inset-x-0 h-px pointer-events-none" style={{ background: 'linear-gradient(90deg, transparent, rgba(124,58,237,0.2) 35%, rgba(94,106,210,0.2) 65%, transparent)' }} />
-      <div className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full blur-[140px] pointer-events-none" style={{ background: 'rgba(124,58,237,0.07)' }} />
-      <div className="max-w-7xl mx-auto relative">
+    <section className="py-28 px-6 md:px-14" style={{ background: 'var(--surface-raised)', borderTop: '1px solid rgba(255,255,255,0.055)' }}>
+      <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <FadeUp className="max-w-xl">
             <div className="section-tag mb-4">Case Studies</div>
@@ -897,10 +886,8 @@ function CaseStudiesSection() {
 // ── Testimonials ──────────────────────────────────────────────────────────────
 function TestimonialsSection() {
   return (
-    <section className="py-28 px-6 md:px-14 relative overflow-hidden" style={{ background: 'rgba(4,4,18,0.65)' }}>
-      <div className="absolute top-0 inset-x-0 h-px pointer-events-none" style={{ background: 'linear-gradient(90deg, transparent, rgba(59,130,246,0.12) 40%, rgba(59,130,246,0.12) 60%, transparent)' }} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full blur-[140px] pointer-events-none" style={{ background: 'rgba(124,58,237,0.06)' }} />
-      <div className="max-w-7xl mx-auto relative">
+    <section className="py-28 px-6 md:px-14" style={{ background: 'var(--surface-base)', borderTop: '1px solid rgba(255,255,255,0.055)' }}>
+      <div className="max-w-7xl mx-auto">
         <FadeUp className="text-center max-w-xl mx-auto mb-16">
           <div className="section-tag inline-flex mb-4">Testimonials</div>
           <h2 className="text-4xl font-extrabold tracking-tight mb-3">What Clients Say</h2>
@@ -936,10 +923,8 @@ function TestimonialsSection() {
 // ── Why Kaldilabs ─────────────────────────────────────────────────────────────
 function WhySection() {
   return (
-    <section className="py-28 px-6 md:px-14 relative overflow-hidden" style={{ background: 'rgba(6,6,24,0.8)' }}>
-      <div className="absolute top-0 inset-x-0 h-px pointer-events-none" style={{ background: 'linear-gradient(90deg, transparent, rgba(94,106,210,0.18) 40%, rgba(94,106,210,0.18) 60%, transparent)' }} />
-      <div className="absolute top-1/2 -translate-y-1/2 -left-40 w-[500px] h-[500px] rounded-full blur-[130px] pointer-events-none" style={{ background: 'rgba(37,99,235,0.07)' }} />
-      <div className="max-w-7xl mx-auto relative grid lg:grid-cols-2 gap-16 items-center">
+    <section className="py-28 px-6 md:px-14" style={{ background: 'var(--surface-raised)', borderTop: '1px solid rgba(255,255,255,0.055)' }}>
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         <SlideLeft>
           <div className="section-tag mb-5">Why Lucy Solution</div>
           <h2 className="text-4xl font-extrabold tracking-tight mb-5">The Lucy Solution Difference</h2>
@@ -994,10 +979,8 @@ function WhySection() {
 // ── Industries ────────────────────────────────────────────────────────────────
 function IndustriesSection() {
   return (
-    <section className="py-20 px-6 md:px-14 relative overflow-hidden" style={{ background: 'rgba(4,4,18,0.65)' }}>
-      <div className="absolute top-0 inset-x-0 h-px pointer-events-none" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0.05) 60%, transparent)' }} />
-      <div className="absolute bottom-0 right-0 w-[350px] h-[250px] rounded-full blur-[100px] pointer-events-none" style={{ background: 'rgba(245,158,11,0.05)' }} />
-      <div className="max-w-7xl mx-auto relative">
+    <section className="py-20 px-6 md:px-14" style={{ background: 'var(--surface-base)', borderTop: '1px solid rgba(255,255,255,0.055)' }}>
+      <div className="max-w-7xl mx-auto">
         <FadeUp className="text-center mb-12">
           <div className="section-tag inline-flex mb-3">Industries</div>
           <h2 className="text-2xl font-bold text-white/75">Sectors We Serve</h2>
@@ -1022,10 +1005,8 @@ function IndustriesSection() {
 // ── Solutions Grid ────────────────────────────────────────────────────────────
 function SolutionsSection() {
   return (
-    <section className="py-28 px-6 md:px-14 relative overflow-hidden" style={{ background: 'rgba(6,6,24,0.8)' }}>
-      <div className="absolute top-0 inset-x-0 h-px pointer-events-none" style={{ background: 'linear-gradient(90deg, transparent, rgba(59,130,246,0.15) 40%, rgba(59,130,246,0.15) 60%, transparent)' }} />
-      <div className="absolute top-0 right-0 w-[450px] h-[400px] rounded-full blur-[130px] pointer-events-none" style={{ background: 'rgba(37,99,235,0.07)' }} />
-      <div className="max-w-7xl mx-auto relative">
+    <section className="py-28 px-6 md:px-14" style={{ background: 'var(--surface-raised)', borderTop: '1px solid rgba(255,255,255,0.055)' }}>
+      <div className="max-w-7xl mx-auto">
         <FadeUp className="text-center max-w-2xl mx-auto mb-16">
           <div className="section-tag inline-flex mb-4">Solutions</div>
           <h2 className="text-4xl font-extrabold tracking-tight mb-4">Systems We Build</h2>
@@ -1068,10 +1049,8 @@ function SolutionsSection() {
 // ── Services Section ──────────────────────────────────────────────────────────
 function ServicesSection() {
   return (
-    <section className="py-28 px-6 md:px-14 relative overflow-hidden" style={{ background: 'rgba(4,4,18,0.65)' }}>
-      <div className="absolute top-0 inset-x-0 h-px pointer-events-none" style={{ background: 'linear-gradient(90deg, transparent, rgba(124,58,237,0.14) 40%, rgba(124,58,237,0.14) 60%, transparent)' }} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full blur-[120px] pointer-events-none" style={{ background: 'rgba(124,58,237,0.06)' }} />
-      <div className="max-w-7xl mx-auto relative">
+    <section className="py-28 px-6 md:px-14" style={{ background: 'var(--surface-base)', borderTop: '1px solid rgba(255,255,255,0.055)' }}>
+      <div className="max-w-7xl mx-auto">
         <FadeUp className="max-w-xl mb-16">
           <div className="section-tag mb-4">Services</div>
           <h2 className="text-4xl font-extrabold tracking-tight mb-4">
@@ -1166,10 +1145,8 @@ function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null)
 
   return (
-    <section className="py-24 md:py-32 px-6 md:px-14 relative overflow-hidden" style={{ background: 'rgba(6,6,24,0.8)' }}>
-      <div className="absolute top-0 inset-x-0 h-px pointer-events-none" style={{ background: 'linear-gradient(90deg, transparent, rgba(94,106,210,0.12) 40%, rgba(94,106,210,0.12) 60%, transparent)' }} />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[200px] rounded-full blur-[100px] pointer-events-none" style={{ background: 'rgba(37,99,235,0.05)' }} />
-      <div className="max-w-3xl mx-auto relative">
+    <section className="py-24 md:py-32 px-6 md:px-14" style={{ background: 'var(--surface-raised)', borderTop: '1px solid rgba(255,255,255,0.055)' }}>
+      <div className="max-w-3xl mx-auto">
         <FadeUp className="text-center mb-14">
           <div className="section-tag inline-flex mb-4">FAQ</div>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white">
@@ -1204,9 +1181,8 @@ function FAQSection() {
 // ── CTA Section ───────────────────────────────────────────────────────────────
 function CTASection() {
   return (
-    <section className="py-24 px-6 md:px-14 relative overflow-hidden" style={{ background: 'rgba(4,4,18,0.65)' }}>
-      <div className="absolute top-0 inset-x-0 h-px pointer-events-none" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0.05) 60%, transparent)' }} />
-      <div className="max-w-5xl mx-auto relative">
+    <section className="py-24 px-6 md:px-14" style={{ background: 'var(--surface-base)', borderTop: '1px solid rgba(255,255,255,0.055)' }}>
+      <div className="max-w-5xl mx-auto">
         <ScaleIn>
           <div className="relative overflow-hidden rounded-3xl border border-white/[0.09]">
             <div className="absolute inset-0 bg-gradient-to-br from-[#0d1424] via-[#111230] to-[#0f0a22]" />
@@ -1362,7 +1338,7 @@ function KaldiFooter() {
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default function Home() {
   return (
-    <div style={{ background: '#040410' }}>
+    <div>
       <KaldiNavbar />
       <HeroSection />
       <TrustMarquee />

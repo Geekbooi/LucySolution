@@ -12,11 +12,11 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    /* Surface scale — deep indigo-navy, visibly not black */
-    --surface-base:    #06061a;
-    --surface-raised:  #080820;
-    --surface-overlay: #0c0c28;
-    --surface-high:    #101030;
+    /* Surface scale — clean near-black enterprise dark */
+    --surface-base:    #07070e;
+    --surface-raised:  #0c0c18;
+    --surface-overlay: #101020;
+    --surface-high:    #141428;
 
     /* Foreground */
     --fg:        #EDEDEF;
@@ -44,17 +44,11 @@
 
   body {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: var(--surface-base);
-    /*
-      Three-point gradient that makes the dark navy clearly visible:
-      — strong blue at top-left
-      — rich violet at bottom-right
-      — deep indigo mid-centre for depth
-    */
+    background-color: #07070e;
     background-image:
-      radial-gradient(ellipse 110% 65% at 0%   0%,   rgba(37, 99, 235, 0.42)  0%, transparent 52%),
-      radial-gradient(ellipse  85% 65% at 100% 105%, rgba(109, 40, 217, 0.34)  0%, transparent 52%),
-      radial-gradient(ellipse  65% 50% at 50%  45%,  rgba(18,  18,  58, 0.60)  0%, transparent 80%);
+      radial-gradient(circle, rgba(255,255,255,0.016) 1px, transparent 1px),
+      radial-gradient(ellipse 110% 40% at 50% -2%, rgba(37,99,235,0.055) 0%, transparent 68%);
+    background-size: 32px 32px, 100% 100%;
     color: var(--fg);
     font-size: 15px;
     line-height: 1.6;
