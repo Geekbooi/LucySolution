@@ -12,11 +12,11 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    /* Surface scale — clean near-black enterprise dark */
-    --surface-base:    #07070e;
-    --surface-raised:  #0c0c18;
-    --surface-overlay: #101020;
-    --surface-high:    #141428;
+    /* Surface scale — clearly differentiated dark tiers */
+    --surface-base:    #06060d;
+    --surface-raised:  #111126;
+    --surface-overlay: #181836;
+    --surface-high:    #1e1e42;
 
     /* Foreground */
     --fg:        #EDEDEF;
@@ -44,10 +44,10 @@
 
   body {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: #07070e;
+    background-color: #06060d;
     background-image:
-      radial-gradient(circle, rgba(255,255,255,0.016) 1px, transparent 1px),
-      radial-gradient(ellipse 110% 40% at 50% -2%, rgba(37,99,235,0.055) 0%, transparent 68%);
+      radial-gradient(circle, rgba(255,255,255,0.028) 1px, transparent 1px),
+      radial-gradient(ellipse 120% 50% at 50% -4%, rgba(37,99,235,0.12) 0%, transparent 60%);
     background-size: 32px 32px, 100% 100%;
     color: var(--fg);
     font-size: 15px;
