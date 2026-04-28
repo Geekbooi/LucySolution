@@ -414,7 +414,7 @@ function PositionStatement() {
     <section
       ref={ref}
       className="py-28 md:py-36 px-6 md:px-14 text-center"
-      style={{ background: 'linear-gradient(180deg, #141432 0%, #0d0d22 100%)', borderTop: '1px solid rgba(255,255,255,0.09)' }}
+      style={{ background: 'linear-gradient(180deg, #161645 0%, #0e0e32 100%)', borderTop: '1px solid rgba(255,255,255,0.08)' }}
     >
       <motion.div style={{ opacity, y }} className="max-w-4xl mx-auto">
         <div className="section-tag inline-flex mb-6">The Lucy Solution Difference</div>
@@ -676,7 +676,7 @@ function FeatureSection({ label, heading, body, linkText = 'Learn more', linkTo 
   return (
     <section
       className="py-24 md:py-28 px-6 md:px-14"
-      style={{ background: '#07070e', borderTop: '1px solid rgba(255,255,255,0.09)' }}
+      style={{ background: '#09091e', borderTop: '1px solid rgba(255,255,255,0.08)' }}
     >
       <div className={`max-w-6xl mx-auto flex flex-col ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-14 md:gap-20`}>
 
@@ -722,7 +722,7 @@ function FeatureSection({ label, heading, body, linkText = 'Learn more', linkTo 
 // ── Tech Stack Section ────────────────────────────────────────────────────────
 function TechStackSection() {
   return (
-    <section className="py-20 px-6 md:px-14" style={{ background: 'linear-gradient(180deg, #141432 0%, #0d0d22 100%)', borderTop: '1px solid rgba(255,255,255,0.09)' }}>
+    <section className="py-20 px-6 md:px-14" style={{ background: 'linear-gradient(180deg, #161645 0%, #0e0e32 100%)', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
       <div className="max-w-6xl mx-auto">
         <FadeUp className="text-center mb-12">
           <div className="section-tag inline-flex mb-4">Built With</div>
@@ -757,7 +757,7 @@ function TechStackSection() {
 // ── Methodology Section ───────────────────────────────────────────────────────
 function MethodologySection() {
   return (
-    <section className="py-28 px-6 md:px-14" style={{ background: '#07070e', borderTop: '1px solid rgba(255,255,255,0.09)' }}>
+    <section className="py-28 px-6 md:px-14" style={{ background: '#09091e', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
       <div className="max-w-7xl mx-auto">
         <FadeUp className="text-center max-w-2xl mx-auto mb-16">
           <div className="section-tag inline-flex mb-4">Methodology</div>
@@ -817,7 +817,7 @@ function MethodologySection() {
 // ── Case Studies ──────────────────────────────────────────────────────────────
 function CaseStudiesSection() {
   return (
-    <section className="py-28 px-6 md:px-14" style={{ background: 'linear-gradient(180deg, #141432 0%, #0d0d22 100%)', borderTop: '1px solid rgba(255,255,255,0.09)' }}>
+    <section className="py-28 px-6 md:px-14" style={{ background: 'linear-gradient(180deg, #161645 0%, #0e0e32 100%)', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <FadeUp className="max-w-xl">
@@ -886,7 +886,7 @@ function CaseStudiesSection() {
 // ── Testimonials ──────────────────────────────────────────────────────────────
 function TestimonialsSection() {
   return (
-    <section className="py-28 px-6 md:px-14" style={{ background: '#07070e', borderTop: '1px solid rgba(255,255,255,0.09)' }}>
+    <section className="py-28 px-6 md:px-14" style={{ background: '#09091e', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
       <div className="max-w-7xl mx-auto">
         <FadeUp className="text-center max-w-xl mx-auto mb-16">
           <div className="section-tag inline-flex mb-4">Testimonials</div>
@@ -923,7 +923,7 @@ function TestimonialsSection() {
 // ── Why Kaldilabs ─────────────────────────────────────────────────────────────
 function WhySection() {
   return (
-    <section className="py-28 px-6 md:px-14" style={{ background: 'linear-gradient(180deg, #141432 0%, #0d0d22 100%)', borderTop: '1px solid rgba(255,255,255,0.09)' }}>
+    <section className="py-28 px-6 md:px-14" style={{ background: 'linear-gradient(180deg, #161645 0%, #0e0e32 100%)', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         <SlideLeft>
           <div className="section-tag mb-5">Why Lucy Solution</div>
@@ -979,7 +979,7 @@ function WhySection() {
 // ── Industries ────────────────────────────────────────────────────────────────
 function IndustriesSection() {
   return (
-    <section className="py-20 px-6 md:px-14" style={{ background: '#07070e', borderTop: '1px solid rgba(255,255,255,0.09)' }}>
+    <section className="py-20 px-6 md:px-14" style={{ background: '#09091e', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
       <div className="max-w-7xl mx-auto">
         <FadeUp className="text-center mb-12">
           <div className="section-tag inline-flex mb-3">Industries</div>
@@ -1005,7 +1005,7 @@ function IndustriesSection() {
 // ── Solutions Grid ────────────────────────────────────────────────────────────
 function SolutionsSection() {
   return (
-    <section className="py-28 px-6 md:px-14" style={{ background: 'linear-gradient(180deg, #141432 0%, #0d0d22 100%)', borderTop: '1px solid rgba(255,255,255,0.09)' }}>
+    <section className="py-28 px-6 md:px-14" style={{ background: 'linear-gradient(180deg, #161645 0%, #0e0e32 100%)', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
       <div className="max-w-7xl mx-auto">
         <FadeUp className="text-center max-w-2xl mx-auto mb-16">
           <div className="section-tag inline-flex mb-4">Solutions</div>
@@ -1049,7 +1049,7 @@ function SolutionsSection() {
 // ── Services Section ──────────────────────────────────────────────────────────
 function ServicesSection() {
   return (
-    <section className="py-28 px-6 md:px-14" style={{ background: '#07070e', borderTop: '1px solid rgba(255,255,255,0.09)' }}>
+    <section className="py-28 px-6 md:px-14" style={{ background: '#09091e', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
       <div className="max-w-7xl mx-auto">
         <FadeUp className="max-w-xl mb-16">
           <div className="section-tag mb-4">Services</div>
@@ -1145,7 +1145,7 @@ function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null)
 
   return (
-    <section className="py-24 md:py-32 px-6 md:px-14" style={{ background: 'linear-gradient(180deg, #141432 0%, #0d0d22 100%)', borderTop: '1px solid rgba(255,255,255,0.09)' }}>
+    <section className="py-24 md:py-32 px-6 md:px-14" style={{ background: 'linear-gradient(180deg, #161645 0%, #0e0e32 100%)', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
       <div className="max-w-3xl mx-auto">
         <FadeUp className="text-center mb-14">
           <div className="section-tag inline-flex mb-4">FAQ</div>
@@ -1181,7 +1181,7 @@ function FAQSection() {
 // ── CTA Section ───────────────────────────────────────────────────────────────
 function CTASection() {
   return (
-    <section className="py-24 px-6 md:px-14" style={{ background: '#07070e', borderTop: '1px solid rgba(255,255,255,0.09)' }}>
+    <section className="py-24 px-6 md:px-14" style={{ background: '#09091e', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
       <div className="max-w-5xl mx-auto">
         <ScaleIn>
           <div className="relative overflow-hidden rounded-3xl border border-white/[0.09]">
