@@ -14,10 +14,6 @@ const values = [
   { title: 'Reliability', desc: 'We deliver what we promise, when we promise it.' },
 ]
 
-const team = [
-  { name: 'Yoseph Masresha', role: 'Founder & CEO', bio: 'Visionary leader with deep expertise in enterprise software and product strategy', avatar: 'YM', photo: '/team-yoseph.jpg' },
-  { name: 'Ferehiwot Biddle', role: 'Account Executive', bio: 'Dedicated to building lasting client relationships and ensuring every engagement exceeds expectations', avatar: 'FB', photo: '/team-ferehiwot.jpg' },
-]
 
 export default function About() {
   return (
@@ -84,42 +80,6 @@ export default function About() {
                   </div>
                   <h3 className="font-bold text-white mb-2">{v.title}</h3>
                   <p className="text-sm text-white/45 leading-relaxed">{v.desc}</p>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="py-20 px-5 bg-[#080808]">
-        <div className="max-w-7xl mx-auto">
-          <FadeUp className="text-center max-w-xl mx-auto mb-12">
-            <div className="section-tag mb-4">Team</div>
-            <h2 className="text-3xl font-black tracking-tight mb-3">The People Behind Lucy Solution</h2>
-            <p className="text-white/50">A small, highly skilled team with a big impact.</p>
-          </FadeUp>
-          <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {team.map((member) => (
-              <StaggerItem key={member.name}>
-                <div className="card-dark p-7 text-center">
-                  {member.photo ? (
-                    <img
-                      src={member.photo}
-                      alt={member.name}
-                      className="w-20 h-20 rounded-2xl object-cover mx-auto mb-4"
-                      onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextSibling.style.display = 'flex' }}
-                    />
-                  ) : null}
-                  <div
-                    className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-violet-600 items-center justify-center text-2xl font-black text-white mx-auto mb-4"
-                    style={{ display: member.photo ? 'none' : 'flex' }}
-                  >
-                    {member.avatar}
-                  </div>
-                  <h3 className="font-bold text-white mb-1">{member.name}</h3>
-                  <div className="text-xs text-blue-400 font-semibold mb-3">{member.role}</div>
-                  <p className="text-xs text-white/45 leading-relaxed">{member.bio}</p>
                 </div>
               </StaggerItem>
             ))}
