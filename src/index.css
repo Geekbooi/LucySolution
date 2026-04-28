@@ -13,10 +13,10 @@
 
   :root {
     /* Surface scale */
-    --surface-base:    #06080f;
-    --surface-raised:  #0d1030;
-    --surface-overlay: rgba(255,255,255,0.07);
-    --surface-high:    rgba(255,255,255,0.12);
+    --surface-base:    #09090e;
+    --surface-raised:  #111118;
+    --surface-overlay: rgba(255,255,255,0.06);
+    --surface-high:    rgba(255,255,255,0.10);
 
     /* Foreground */
     --fg:        #EDEDEF;
@@ -44,14 +44,13 @@
 
   body {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: #060910;
+    background-color: #09090e;
     background-image:
-      radial-gradient(circle, rgba(255,255,255,0.024) 1px, transparent 1px),
-      radial-gradient(ellipse 80% 60% at -8% 10%, rgba(59,130,246,0.32) 0%, transparent 52%),
-      radial-gradient(ellipse 60% 55% at 108% 55%, rgba(124,58,237,0.26) 0%, transparent 52%),
-      radial-gradient(ellipse 65% 40% at 50% 108%, rgba(99,102,241,0.2) 0%, transparent 52%),
-      linear-gradient(155deg, #0d0b28 0%, #070b20 30%, #06050f 65%, #030608 100%);
-    background-size: 24px 24px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"),
+      radial-gradient(ellipse 120% 90% at -12% -5%, rgba(96,165,250,0.09) 0%, transparent 58%),
+      radial-gradient(ellipse 100% 80% at 112% 45%, rgba(167,139,250,0.08) 0%, transparent 58%),
+      radial-gradient(ellipse 85% 65% at 50% 112%, rgba(99,102,241,0.07) 0%, transparent 58%);
+    background-size: 200px 200px, 100% 100%, 100% 100%, 100% 100%;
     background-attachment: fixed;
     color: var(--fg);
     font-size: 15px;
@@ -252,21 +251,20 @@
   /* ── Standard dark card ─────────────────────────────────── */
 
   .card-dark {
-    background: rgba(255,255,255,0.055);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 20px;
-    backdrop-filter: blur(16px) saturate(160%);
-    -webkit-backdrop-filter: blur(16px) saturate(160%);
-    box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 4px 24px rgba(0,0,0,0.35);
-    transition: background 0.25s var(--ease-smooth), border-color 0.25s var(--ease-smooth),
-                transform 0.3s var(--ease-spring), box-shadow 0.3s var(--ease-smooth);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 2px 16px rgba(0,0,0,0.25);
+    transition: background 0.22s var(--ease-smooth), border-color 0.22s var(--ease-smooth),
+                transform 0.28s var(--ease-spring), box-shadow 0.28s var(--ease-smooth);
   }
   .card-dark:hover {
-    background: rgba(255,255,255,0.08);
-    border-color: rgba(59,130,246,0.3);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(59,130,246,0.15),
-                0 1px 0 rgba(255,255,255,0.1) inset;
+    background: rgba(255,255,255,0.065);
+    border-color: rgba(255,255,255,0.14);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.08) inset;
   }
 
   /* ── Glass card ─────────────────────────────────────────── */
@@ -284,12 +282,12 @@
 
   .card-gradient-border {
     position: relative;
-    background: rgba(255,255,255,0.055);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 20px;
-    backdrop-filter: blur(16px) saturate(160%);
-    -webkit-backdrop-filter: blur(16px) saturate(160%);
-    box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 4px 24px rgba(0,0,0,0.35);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 2px 16px rgba(0,0,0,0.25);
     transition: transform 0.3s var(--ease-spring), box-shadow 0.3s var(--ease-smooth),
                 background 0.25s var(--ease-smooth);
   }

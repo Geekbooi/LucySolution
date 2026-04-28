@@ -47,7 +47,7 @@ export default function SolutionDetail() {
       </section>
 
       {/* Features */}
-      <section className="py-20 px-5 border-t border-white/[0.08]" style={{ background: 'rgba(255,255,255,0.04)' }}>
+      <section className="py-20 px-5 border-t border-white/[0.08]" style={{ background: 'rgba(255,255,255,0.028)' }}>
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-14 items-start">
             <SlideLeft>
@@ -154,7 +154,7 @@ export default function SolutionDetail() {
       </section>
 
       {/* More solutions */}
-      <section className="py-20 px-5 border-t border-white/[0.08]" style={{ background: 'rgba(255,255,255,0.04)' }}>
+      <section className="py-20 px-5 border-t border-white/[0.08]" style={{ background: 'rgba(255,255,255,0.028)' }}>
         <div className="max-w-7xl mx-auto">
           <FadeUp className="mb-10">
             <h2 className="text-2xl font-bold text-white">Explore Other Solutions</h2>

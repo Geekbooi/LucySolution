@@ -40,7 +40,7 @@ export default function ServiceDetail() {
       </section>
 
       {/* Process */}
-      <section className="py-20 px-5 border-t border-white/[0.08]" style={{ background: 'rgba(255,255,255,0.04)' }}>
+      <section className="py-20 px-5 border-t border-white/[0.08]" style={{ background: 'rgba(255,255,255,0.028)' }}>
         <div className="max-w-7xl mx-auto">
           <FadeUp className="max-w-xl mb-12">
             <div className="section-tag mb-4">Process</div>
